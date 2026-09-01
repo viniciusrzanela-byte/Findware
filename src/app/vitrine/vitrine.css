@@ -1,0 +1,60 @@
+.ofertas
+{
+    padding: 30px 40px;
+}
+
+.ofertas h2
+{
+    color:#111827;
+    margin-bottom: 20px;
+}
+
+.lista-ofertas
+{
+    display:flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.produto
+{
+    position: relative;
+    width: 220px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.produto img
+{
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+}
+
+.produto h3
+{
+    font-size: 16px;
+}
+
+.desconto
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #dc2626;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.produto button
+{
+    width:100%;
+    padding: 10px;
+    background-color: #1E3A8A;
+    color: white;
+    border-radius: 5px;
+}

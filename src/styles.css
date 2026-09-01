@@ -1,0 +1,24 @@
+*
+{
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.original
+{
+    color: gray;
+    text-decoration: line-through;
+}
+
+.novo
+{
+    color: #1E3A8A;
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,103 @@
+header
+{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 40px;
+    background-color: #111827;
+}
+
+.logo
+{
+    color: #60A5FA;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+input
+{
+    flex: 1;
+}
+
+button
+{
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+button img
+{
+    width: 20px;
+    height: 20px;
+}
+
+.OK
+{
+    margin-left: -20px;
+    color: #60A5FA;
+    font-weight: bold;
+}
+
+nav
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 40px;
+    background-color: #1E3A8A;
+}
+
+.categoria
+{
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.categoria:hover
+{
+    background-color: #2563EB;
+}
+
+.item-menu
+{
+    position: relative;
+}
+
+.sub-menu
+{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 180px;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+.sub-menu button
+{
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: left;
+    color: #1F2937;
+}
+
+.sub-menu button:hover
+{
+    background-color: #E5E7EB;
+}
+
+.item-menu:hover .sub-menu
+{
+    display: block;
+}

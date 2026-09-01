@@ -1,0 +1,16 @@
+<section class="ofertas">
+  <h2>Ofertas</h2>
+  <div class="lista-ofertas">
+    @for (produto of ofertas; track produto.nome)
+    {
+      <div class="produto">
+        <span class="desconto">-{{ produto.desconto }}%</span>
+        <img [src]="produto.imagem" [alt]="produto.nome" (error)="Erro($event)">
+        <h3>{{ produto.nome }}</h3>
+        <p class="original">{{ produto.original }}</p>
+        <p class="novo">{{ produto.novo }}</p>
+        <button [routerLink]="['detalhe', produto.id]">Ver Produto</button>
+      </div>
+    }
+  </div>
+</section>
