@@ -1,0 +1,126 @@
+.login
+{
+    display: flex;
+    max-width: 900px;
+    min-height: 480px;
+    margin: 50px auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+}
+
+.apresentacao
+{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: #111827;
+    text-align: center;
+}
+
+.apresentacao h1
+{
+    color: white;
+    font-size: 30px;
+    margin-bottom: 35px;
+}
+
+.apresentacao img
+{
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+}
+
+.formulario
+{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+}
+
+.formulario h2
+{
+    color: #111827;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.formulario input
+{
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 18px;
+}
+
+.formulario input:focus
+{
+    border-color: #2563EB;
+}
+
+.senha
+{
+    position: relative;
+}
+
+.campo-senha input
+{
+    padding-right: 50px;
+}
+
+.ocultar
+{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.confirmar
+{
+    width: 100%;
+    padding: 13px;
+    background-color: #1E3A8A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.confirmar:hover
+{
+    background-color: #2563EB;
+}
+
+.cadastro
+{
+    margin-top: 20px;
+    border: none;
+    background: transparent;
+    color: #1E3A8A;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.cadastro:hover
+{
+    text-decoration: underline;
+}

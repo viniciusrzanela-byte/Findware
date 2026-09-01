@@ -1,0 +1,16 @@
+<section class="login">
+    <div class="apresentacao">
+        <h1>Olá, Bem-vindo de Volta!</h1>
+        <img src="login.png" alt="Login">
+    </div>
+    <div class="formulario">
+        <h2>Entrar</h2>
+        <input type="email" placeholder="Email">
+        <div class="senha">
+            <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha">
+            <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
+        </div>
+        <button class="confirmar">Confirmar</button>
+        <button [routerLink]="['/cadastrar']" class="cadastro">Não possui cadastro?</button>
+    </div>
+</section>
