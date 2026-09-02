@@ -1,1 +1,26 @@
-<p>cadastrar works!</p>
+<section class="cadastrar">
+    <h1>Interessado em eletrônicos de alta qualidade? Junte-se a nós!</h1>
+    <div class="informacoes">
+        <input type="text" placeholder="Nome">
+        <input type="text" placeholder="Sobrenome">
+        <div>
+            <input type="text" placeholder="CPF" [(ngModel)]="cpf">
+            @if (cpf && !valido)
+            {
+                <p class="erro">CPF inválido</p>
+            }
+        </div>
+        <input type="email" placeholder="Email">
+        <div class ="senha">   
+            <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha">
+            <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
+            <input [type]="esconder ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="confirmar">
+            <button class="ocultar" type="button" (click)="esconder = !esconder">👁</button>
+            @if (confirmar && !iguais)
+            {
+                <p class="erro">As senhas devem ser iguais</p>
+            }
+        </div>
+        <button [routerLink]="['/']" class="Entrar" [disabled]="!valido || !iguais || !senha">Cadastrar</button>
+    </div>
+</section>
