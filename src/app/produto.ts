@@ -44,7 +44,6 @@ const ofertasSemId: OfertaSemId[] =
       novo: 'R$ 2.249,10',
       descricao: 'Smartwatch da Apple que combina praticidade e recursos para acompanhar atividades, notificações e diferentes momentos da rotina.' },
 
-
     // COMPUTADORES - PROCESSADORES
     { categoria: 'Computadores', tipo: 'Processadores', desconto: 15, imagem: 'ryzen-5-7600.png', nome: 'AMD Ryzen 5 7600', original: 'R$ 1.399,00',
       novo: 'R$ 1.189,15', descricao: 'Processador de 6 núcleos e 12 threads voltado para computadores de alto desempenho, oferecendo ótimo equilíbrio entre desempenho em jogos e produtividade.' },
