@@ -1,26 +1,75 @@
 <section class="cadastrar">
     <h1>Interessado em eletrônicos de alta qualidade? Junte-se a nós!</h1>
     <div class="informacoes">
-        <input type="text" placeholder="Nome">
-        <input type="text" placeholder="Sobrenome">
-        <div>
+        <div class="nomeação">
+            <input type="text" placeholder="Nome" [(ngModel)]="nome">
+            @if (tentativa && !nome.trim())
+            {
+                <p class="erro">O nome é obrigatório!</p>
+            }
+            @else if (tentativa && !nomeV)
+            {
+                <p class="erro">Seu nome só pode ser composto por letras!</p>
+            }
+            <input type="text" placeholder="Nome do Meio" [(ngModel)]="nomeMeio">
+            @if (tentativa && !nomeMeioV)
+            {
+                <p class="erro">Seu Nome do Meio só pode ser composto por letras!</p>
+            }
+            <input type="text" placeholder="Sobrenome" [(ngModel)]="sobrenome">
+            @if (tentativa && !sobrenome.trim())
+            {
+                <p class="erro">O sobrenome é obrigatório!</p>
+            }
+            @else if (tentativa && !sobrenomeV)
+            {
+                <p class="erro">Seu sobrenome só pode ser composto por letras!</p>
+            }
+        </div>
+        <div class ="documento">
             <input type="text" placeholder="CPF" [(ngModel)]="cpf">
-            @if (cpf && !valido)
+            @if (tentativa && !cpf.trim())
+            {
+                <p class="erro">O CPF é obrigatório!</p>
+            }
+            @else if (tentativa && !valido)
             {
                 <p class="erro">CPF inválido</p>
             }
         </div>
-        <input type="email" placeholder="Email">
-        <div class ="senha">   
+        <div class="email">
+            <input type="email" placeholder="Email" [(ngModel)]="email">
+            @if (tentativa && !email.trim())
+            {
+                <p class="erro">O email é obrigatório!</p>
+            }
+            @else if (tentativa && !emailV)
+            {
+                <p class="erro">O endereço de email é inválido!</p>
+            } 
+        </div>
+        <div class ="senha">
             <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha">
             <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
             <input [type]="esconder ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="confirmar">
             <button class="ocultar" type="button" (click)="esconder = !esconder">👁</button>
-            @if (confirmar && !iguais)
+            @if (tentativa && !senha.trim())
             {
-                <p class="erro">As senhas devem ser iguais</p>
+                <p class="erro">A senha é obrigatória!</p>
+            }
+            @else if (tentativa && senha && !senhaV)
+            {
+                <p class="erro">A senha deve ter pelo menos 6 caracteres!</p>
+            }
+            @else if (tentativa && senha.trim() && !confirmar.trim())
+            {
+                <p class="erro">Confirme sua senha!</p>
+            }
+            @else if (tentativa && senha && confirmar && !iguais)
+            {
+                <p class="erro">As senhas devem ser iguais!</p>
             }
         </div>
-        <button [routerLink]="['/']" class="Entrar" [disabled]="!valido || !iguais || !senha">Cadastrar</button>
+        <button (click)="tentativa = true" [routerLink]="nomeV && nomeMeioV && sobrenomeV && valido && emailV && senhaV && confirmar.trim() && iguais ? ['/'] : null" class="entrar">Cadastrar</button>
     </div>
 </section>
