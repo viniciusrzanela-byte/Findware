@@ -1,10 +1,36 @@
-header
-{
+/* ==================================================
+HEADER
+================================================== */
+header {
     display: flex;
     align-items: center;
     gap: 30px;
     padding: 20px 40px;
     background-color: #111827;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #60A5FA;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.logo img {
+    width: 75px;
+    height: auto;
+}
+
+.logo span {
+    margin-top: 5px;
 }
 
 .pesquisa {
@@ -13,41 +39,71 @@ header
     border: 1px solid #ccc;
 }
 
-.logo
-{
-    color: #60A5FA;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-input
-{
+input {
     flex: 1;
 }
 
-button
-{
+button {
     border: none;
     background: transparent;
     padding: 0;
     cursor: pointer;
 }
 
-button img
-{
+button img {
     width: 20px;
     height: 20px;
 }
 
-.OK
-{
+.OK {
     margin-left: -20px;
+    font-size: 20px;
     color: #60A5FA;
+    font-weight: bold;
+    background-color: #1E3A8A;
+    border-radius: 50%;
+    padding: 8px;
+}
+
+.botao-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #60A5FA;
+    font-size: 14px;
     font-weight: bold;
 }
 
-nav
-{
+.botao-login img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.carrinho {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #60A5FA;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.carrinho img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 4px;
+}
+
+/* ==================================================
+NAVEGAÇÃO
+================================================== */
+nav {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -55,8 +111,7 @@ nav
     background-color: #1E3A8A;
 }
 
-.categoria
-{
+.categoria {
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -65,18 +120,15 @@ nav
     transition: 0.2s;
 }
 
-.categoria:hover
-{
+.categoria:hover {
     background-color: #2563EB;
 }
 
-.item-menu
-{
+.item-menu {
     position: relative;
 }
 
-.sub-menu
-{
+.sub-menu {
     display: none;
     position: absolute;
     top: 100%;
@@ -89,8 +141,7 @@ nav
     z-index: 10;
 }
 
-.sub-menu button
-{
+.sub-menu button {
     display: block;
     width: 100%;
     padding: 10px 20px;
@@ -98,44 +149,54 @@ nav
     color: #1F2937;
 }
 
-.sub-menu button:hover
-{
+.sub-menu button:hover {
     background-color: #E5E7EB;
 }
 
-.item-menu:hover .sub-menu
-{
+.item-menu:hover .sub-menu {
     display: block;
 }
 
+/* ==================================================
+PLAYER DE MÚSICA
+================================================== */
 .music-player {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .music-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  width: 45px;
-  height: 45px;
+    width: 45px;
+    height: 45px;
 
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
+    border-radius: 50%;
+    background-color: #1E3A8A;
+    color: white;
+
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.music-button:hover {
+    background-color: #2563EB;
+}
+
+.music-button.tocando {
+    background-color: #2563EB;
+    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.25);
 }
 
 .music-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.progresso {
-  width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .control-button {
@@ -150,7 +211,7 @@ nav
 }
 
 .control-button:hover {
-    background-color: #2563eb;
+    background-color: #2563EB;
 }
 
 .progresso {

@@ -3,10 +3,13 @@ OFERTAS
 ========================= */
 .ofertas {
     padding: 30px 40px;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ofertas h2 {
-    color: #111827;
+    color: #0056b3;
     margin-bottom: 20px;
 }
 

@@ -1,141 +1,148 @@
-:host
-{
+/* ==================================================
+PÁGINA DE CADASTRO
+================================================== */
+:host {
     display: block;
     min-height: calc(100vh - 180px);
     padding: 45px 20px;
     background-color: #f3f4f6;
 }
 
-.cadastrar
-{
+/* ==================================================
+CONTAINER DO CADASTRO
+================================================== */
+.cadastrar {
     max-width: 900px;
     margin: 0 auto;
     padding: 40px 50px;
+
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 12px;
+
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
 }
 
-
-.cadastrar h1
-{
+.cadastrar h1 {
     margin-top: 0;
     margin-bottom: 35px;
+
     color: #111827;
     font-size: 28px;
     text-align: center;
 }
 
-.informacoes
-{
+/* ==================================================
+INFORMAÇÕES DO USUÁRIO
+================================================== */
+.informacoes {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.nomeação
-{
+.nomeação {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
 
-.nomeação .erro
-{
+.nomeação .erro {
     grid-column: 1 / -1;
 }
 
-.documento
-{
+.documento,
+.email {
     display: flex;
     flex-direction: column;
 }
 
-.email
-{
-    display: flex;
-    flex-direction: column;
-}
-
-.informacoes input
-{
+.informacoes input {
     width: 100%;
     padding: 13px 15px;
+
     border: 1px solid #cbd5e1;
     border-radius: 6px;
+
     font-size: 15px;
     outline: none;
+
     transition: 0.2s;
 }
 
-
-.informacoes input:focus
-{
+.informacoes input:focus {
     border-color: #2563EB;
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
-.senha
-{
+/* ==================================================
+SENHA
+================================================== */
+.senha {
     display: grid;
     grid-template-columns: 1fr 42px 1fr 42px;
     align-items: start;
 }
 
-.senha input
-{
+.senha input {
     height: 45px;
     border-radius: 6px 0 0 6px;
 }
 
-.ocultar
-{
+.ocultar {
     height: 45px;
+
     border: 1px solid #cbd5e1;
     border-left: none;
-    background-color: white;
     border-radius: 0 6px 6px 0;
+
+    background-color: white;
+
     font-size: 17px;
     cursor: pointer;
 }
 
-.ocultar:hover
-{
+.ocultar:hover {
     background-color: #f1f5f9;
 }
 
-.erro
-{
+/* ==================================================
+MENSAGENS DE ERRO
+================================================== */
+.erro {
     margin: 6px 0 0 0;
+
     color: #dc2626;
     font-size: 13px;
     font-weight: bold;
 }
 
-
-.senha .erro
-{
+.senha .erro {
     grid-column: 1 / -1;
     margin-top: 8px;
 }
 
-.entrar
-{
+/* ==================================================
+BOTÃO DE ENTRAR
+================================================== */
+.entrar {
     width: 100%;
     padding: 13px;
     margin-top: 10px;
+
     border: none;
     border-radius: 6px;
+
     background-color: #1E3A8A;
     color: white;
+
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+
     transition: 0.2s;
 }
 
-.entrar:hover
-{
+.entrar:hover {
     background-color: #2563EB;
 }
