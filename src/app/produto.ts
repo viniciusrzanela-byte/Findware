@@ -31,7 +31,6 @@ const ofertasSemId: OfertaSemId[] =
     { categoria: 'Móveis', tipo: 'Smartwatches', desconto: 25, imagem: 'galaxy-watch-6.png', nome: 'Samsung Galaxy Watch 6', original: 'R$ 1.799,00', novo: 'R$ 1.349,25' },
     { categoria: 'Móveis', tipo: 'Smartwatches', desconto: 10, imagem: 'apple-watch-se.png', nome: 'Apple Watch SE', original: 'R$ 2.499,00', novo: 'R$ 2.249,10' },
 
-
     // COMPUTADORES - PROCESSADORES
     { categoria: 'Computadores', tipo: 'Processadores', desconto: 15, imagem: 'ryzen-5-7600.png', nome: 'AMD Ryzen 5 7600', original: 'R$ 1.399,00', novo: 'R$ 1.189,15' },
     { categoria: 'Computadores', tipo: 'Processadores', desconto: 18, imagem: 'i5-14400f.png', nome: 'Intel Core i5-14400F', original: 'R$ 1.699,00', novo: 'R$ 1.393,18' },
