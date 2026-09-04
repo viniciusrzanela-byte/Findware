@@ -1,16 +1,30 @@
 <section class="ofertas">
   <h2>Ofertas</h2>
+
   <div class="lista-ofertas">
-    @for (produto of ofertas; track produto.nome)
+    @for (produto of ofertasVisiveis; track produto.nome)
     {
       <div class="produto">
         <span class="desconto">-{{ produto.desconto }}%</span>
-        <img [src]="produto.imagem" [alt]="produto.nome" (error)="Erro($event)">
+
+        <img
+          [src]="produto.imagem"
+          [alt]="produto.nome"
+          (error)="Erro($event)"
+        >
+
         <h3>{{ produto.nome }}</h3>
         <p class="original">{{ produto.original }}</p>
         <p class="novo">{{ produto.novo }}</p>
-        <button [routerLink]="['detalhe', produto.id]">Ver Produto</button>
+
+        <button class="ver-produto" [routerLink]="['detalhe', produto.id]">
+          Ver Produto
+        </button>
       </div>
     }
   </div>
+
+  <button class="ver-mais" (click)="mostrarTodos = !mostrarTodos">
+    {{ mostrarTodos ? 'Ver menos' : 'Ver mais' }}
+  </button>
 </section>

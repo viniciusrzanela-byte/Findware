@@ -94,3 +94,13 @@
 </nav>
 
 <router-outlet />
+
+<div class="music-player">
+    <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()"> 🎵 </button>
+
+    <div class="music-controls">
+        <button class="control-button" (click)="voltarMusica()" title="Voltar ao início"> ⏮ </button>
+        <input type="range" class="progresso" min="0" [max]="duracaoMusica" [value]="tempoAtual" (input)="alterarTempo($event)">
+        <button class="control-button" (click)="proximaMusica()" title="Próxima música"> ⏭ </button>
+    </div>
+</div>
