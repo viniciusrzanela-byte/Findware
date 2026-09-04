@@ -16,12 +16,12 @@ type OfertaSemId = Omit<Oferta, 'id'>;
 const ofertasSemId: OfertaSemId[] =
 [
     // MÓVEIS - CELULARES
-    { categoria: 'Móveis', tipo: 'Celulares', desconto: 20, imagem: 'g24.png', nome: 'Samsung Galaxy S24', original: 'R$ 2.243,15', novo: 'R$ 1.794,52' },
+    { categoria: 'Móveis', tipo: 'Celulares', desconto: 20, imagem: 'samsung24.png', nome: 'Samsung Galaxy S24', original: 'R$ 2.243,15', novo: 'R$ 1.794,52' },
     { categoria: 'Móveis', tipo: 'Celulares', desconto: 15, imagem: 'ip16.png', nome: 'iPhone 16', original: 'R$ 4.599,00', novo: 'R$ 3.909,15' },
 
     // MÓVEIS - TABLETS
     { categoria: 'Móveis', tipo: 'Tablets', desconto: 18, imagem: 'tab-s9-fe.png', nome: 'Samsung Galaxy Tab S9 FE', original: 'R$ 2.799,00', novo: 'R$ 2.295,18' },
-    { categoria: 'Móveis', tipo: 'Tablets', desconto: 12, imagem: 'ipad-10.png', nome: 'iPad 10ª geração', original: 'R$ 3.499,00', novo: 'R$ 3.079,12' },
+    { categoria: 'Móveis', tipo: 'Tablets', desconto: 12, imagem: 'ipad10.png', nome: 'iPad 10ª geração', original: 'R$ 3.499,00', novo: 'R$ 3.079,12' },
 
     // MÓVEIS - NOTEBOOKS
     { categoria: 'Móveis', tipo: 'Notebooks', desconto: 20, imagem: 'ideapad-3.png', nome: 'Lenovo IdeaPad 3', original: 'R$ 3.299,00', novo: 'R$ 2.639,20' },
@@ -86,7 +86,7 @@ const ofertasSemId: OfertaSemId[] =
     { categoria: 'Games', tipo: 'Xbox', desconto: 18, imagem: 'xbox-series-s.png', nome: 'Xbox Series S', original: 'R$ 2.899,00', novo: 'R$ 2.377,18' },
 
     // GAMES - JOGOS
-    { categoria: 'Games', tipo: 'Jogos', desconto: 25, imagem: 'elden-ring.png', nome: 'Elden Ring', original: 'R$ 299,00', novo: 'R$ 224,25' },
+    { categoria: 'Games', tipo: 'Jogos', desconto: 25, imagem: 'elden-ring.png', nome: 'Elden Ring (PlayStation 5)', original: 'R$ 299,00', novo: 'R$ 224,25' },
     { categoria: 'Games', tipo: 'Jogos', desconto: 20, imagem: 'cyberpunk-ultimate.png', nome: 'Cyberpunk 2077 Ultimate Edition', original: 'R$ 349,00', novo: 'R$ 279,20' },
 
 
