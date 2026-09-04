@@ -107,3 +107,54 @@ nav
 {
     display: block;
 }
+
+.music-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.music-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.music-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progresso {
+  width: 250px;
+}
+
+.control-button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background-color: #1E3A8A;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.control-button:hover {
+    background-color: #2563eb;
+}
+
+.progresso {
+    width: 160px;
+    cursor: pointer;
+    accent-color: #1E3A8A;
+}

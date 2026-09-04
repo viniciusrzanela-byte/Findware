@@ -9,7 +9,7 @@ import { Oferta, OFERTAS } from '../produto';
   styleUrl: './vitrine.css',
 })
 
-export class Vitrine 
+export class Vitrine
 {
   ofertas = this.embaralharSemRepetirTipo(OFERTAS);
   private embaralhar(lista: string[])
@@ -26,6 +26,13 @@ export class Vitrine
     return copia;
   }
 
+  mostrarTodos = false;
+
+  get ofertasVisiveis() {
+    return this.mostrarTodos
+      ? this.ofertas
+      : this.ofertas.slice(0, 4);
+  }
 
   private embaralharSemRepetirTipo(lista: Oferta[])
   {
