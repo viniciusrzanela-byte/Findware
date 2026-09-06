@@ -21,7 +21,10 @@ export class Cadastrar
   esconder = false;
   senha = '';
   confirmar = '';
+  exibir = false;
   tentativa = false;
+  DDIe = '🇧🇷 +55';
+  telefone = '';
 
   vNome(valor: string): boolean
   {
@@ -32,7 +35,7 @@ export class Cadastrar
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
   }
   Validar(cpf: string): boolean
-{
+  {
     cpf = cpf.trim();
     const formato = /^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
     if (!formato.test(cpf))
@@ -75,13 +78,18 @@ export class Cadastrar
   {
     return this.Validar(this.cpf);
   }
+  get telefoneV()
+  {
+    return /^\d{8,15}$/.test(this.telefone);
+  }
   get emailV()
   {
     return this.vEmail(this.email);
   }
   get senhaV()
   {
-    return this.senha.trim().length >= 6;
+    const senha = this.senha;
+    return (senha.length >= 8 && /[A-Z]/.test(senha) && /[a-z]/.test(senha) && /[0-9]/.test(senha) && /[^A-Za-z0-9]/.test(senha));
   }
   get iguais()
   {

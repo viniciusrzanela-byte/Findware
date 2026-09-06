@@ -1,20 +1,13 @@
-<header>
-  <a class="logo" [routerLink]="['/']">
-      <img src="Findware.png" alt="Findware">
-      <span>Findware</span>
-  </a>
-  <input type="text" class="pesquisa" placeholder="Pesquisar...">
-  <button class="OK">OK</button>
-  <button [routerLink]="['login']" title="Entrar" class="botao-login">
-      <img src="login.png" alt="Entrar">
-      <span>Entrar</span>
-  </button>
-  <button title="Carrinho" class="carrinho">
-      <img src="carrinho.png" alt="Carrinho">
-      <span>Carrinho</span>
-  </button>
-</header>
-
+@if (!router.url.startsWith('/cadastrar'))
+{
+  <header>
+    <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"><span>Findware</span></a>
+    <input type="text" class="pesquisa" placeholder="Pesquisar...">
+    <button class="OK">OK</button>
+    <button [routerLink]="['login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
+    <button title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho"><span>Carrinho</span></button>
+  </header>
+}
 <nav>
 
   <div class="item-menu">
@@ -103,10 +96,7 @@
 <router-outlet />
 
 <div class="music-player">
-    <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">
-        {{ musicaTocando ? '⏸' : '▶' }}
-    </button>
-
+    <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">{{ musicaTocando ? '⏸' : '▶' }}</button>
     <div class="music-controls">
         <button class="control-button" (click)="voltarMusica()" title="Voltar ao início"> ⏮ </button>
         <input type="range" class="progresso" min="0" [max]="duracaoMusica" [value]="tempoAtual" (input)="alterarTempo($event)">

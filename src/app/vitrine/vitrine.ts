@@ -28,10 +28,9 @@ export class Vitrine
 
   mostrarTodos = false;
 
-  get ofertasVisiveis() {
-    return this.mostrarTodos
-      ? this.ofertas
-      : this.ofertas.slice(0, 4);
+  get ofertasVisiveis() 
+  {
+    return this.mostrarTodos ? this.ofertas: this.ofertas.slice(0, 4);
   }
 
   private embaralharSemRepetirTipo(lista: Oferta[])

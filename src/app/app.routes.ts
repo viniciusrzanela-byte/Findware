@@ -3,6 +3,7 @@ import { Detalhe } from './detalhe/detalhe';
 import { Vitrine } from './vitrine/vitrine';
 import { Login } from './login/login';
 import { Cadastrar } from './cadastrar/cadastrar';
+import { Esqueceu } from './esqueceu/esqueceu';
 
 export const routes: Routes = 
 [
@@ -21,5 +22,9 @@ export const routes: Routes =
     {
         path: 'cadastrar',
         component: Cadastrar
+    },
+    {
+        path: 'esqueceu',
+        component: Esqueceu
     }
 ];
