@@ -1,4 +1,4 @@
-@if (!router.url.startsWith('/cadastrar'))
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu'))
 {
   <header>
     <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"><span>Findware</span></a>
@@ -8,98 +8,96 @@
     <button title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho"><span>Carrinho</span></button>
   </header>
 }
-<nav>
-
-  <div class="item-menu">
-    <button class="categoria" title="Móveis">Dispositivos Móveis</button>
-      <div class="sub-menu">
-        <button>Celulares</button>
-        <button>Tablets</button>
-        <button>Notebooks</button>
-        <button>Smartwatches</button>
-      </div>
-  </div>
-
-  <div class="item-menu">
-    <button class="categoria" title="Computadores">Computadores</button>
-      <div class="sub-menu">
-        <button>Processadores</button>
-        <button>Placas-mãe</button>
-        <button>Memórias RAM</button>
-        <button>Placas de vídeo</button>
-        <button>SSD e HD</button>
-        <button>Fontes</button>
-        <button>Gabinetes</button>
-        <button>Refrigeração</button>
-        <button>Placas de expansão</button>
-        <button>Monitores</button>
-      </div>
-  </div>
-
-  <div class="item-menu">
-    <button class="categoria" title="Games">Games</button>
-      <div class="sub-menu">
-        <button>PlayStation</button>
-        <button>Nintendo</button>
-        <button>Xbox</button>
-        <button>Jogos</button>
-      </div>
-  </div>
-
-  <div class="item-menu">
-    <button class="categoria" title="TV e Áudio">TV e Áudio</button>
-      <div class="sub-menu">
-        <button>Smart TVs</button>
-        <button>Projetores</button>
-        <button>Soundbars</button>
-        <button>Home Theaters</button>
-        <button>Caixas de Som</button>
-        <button>Fones de Ouvido</button>
-        <button>Headsets</button>
-        <button>Microfones</button>
-        <button>Amplificadores</button>
-        <button>Receivers</button>
-        <button>Subwoofers</button>
-      </div>
-  </div>
-
-  <div class="item-menu">
-    <button class="categoria" title="Casa">Casa</button>
-      <div class="sub-menu">
-        <button>Assistentes Virtuais</button>
-        <button>Lâmpadas Inteligentes</button>
-        <button>Segurança</button>
-        <button>Robôs Aspiradores</button>
-        <button>Climatização</button>
-        <button>Aspiradores</button>
-        <button>Tomadas e Energia</button>
-      </div>
-  </div>
-
-  <div class="item-menu">
-    <button class="categoria" title="Acessórios">Acessórios</button>
-      <div class="sub-menu">
-        <button>Cabos</button>
-        <button>Carregadores</button>
-        <button>Adaptadores</button>
-        <button>Hubs USB</button>
-        <button>Suportes</button>
-        <button>Capas e Películas</button>
-        <button>Power Banks</button>
-        <button>Armazenamento Portátil</button>
-        <button>Leitores de Cartão</button>
-        <button>Dock Stations</button>
-      </div>
-  </div>
-</nav>
-
-<router-outlet />
-
-<div class="music-player">
-    <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">{{ musicaTocando ? '⏸' : '▶' }}</button>
-    <div class="music-controls">
-        <button class="control-button" (click)="voltarMusica()" title="Voltar ao início"> ⏮ </button>
-        <input type="range" class="progresso" min="0" [max]="duracaoMusica" [value]="tempoAtual" (input)="alterarTempo($event)">
-        <button class="control-button" (click)="proximaMusica()" title="Próxima música"> ⏭ </button>
+@if (!router.url.startsWith('/esqueceu'))
+{
+  <nav>
+    <div class="item-menu">
+      <button class="categoria" title="Móveis">Dispositivos Móveis</button>
+        <div class="sub-menu">
+          <button>Celulares</button>
+          <button>Tablets</button>
+          <button>Notebooks</button>
+          <button>Smartwatches</button>
+        </div>
     </div>
-</div>
+    <div class="item-menu">
+      <button class="categoria" title="Computadores">Computadores</button>
+        <div class="sub-menu">
+          <button>Processadores</button>
+          <button>Placas-mãe</button>
+          <button>Memórias RAM</button>
+          <button>Placas de vídeo</button>
+          <button>SSD e HD</button>
+          <button>Fontes</button>
+          <button>Gabinetes</button>
+          <button>Refrigeração</button>
+          <button>Placas de expansão</button>
+          <button>Monitores</button>
+        </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Games">Games</button>
+        <div class="sub-menu">
+          <button>PlayStation</button>
+          <button>Nintendo</button>
+          <button>Xbox</button>
+          <button>Jogos</button>
+        </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="TV e Áudio">TV e Áudio</button>
+        <div class="sub-menu">
+          <button>Smart TVs</button>
+          <button>Projetores</button>
+          <button>Soundbars</button>
+          <button>Home Theaters</button>
+          <button>Caixas de Som</button>
+          <button>Fones de Ouvido</button>
+          <button>Headsets</button>
+          <button>Microfones</button>
+          <button>Amplificadores</button>
+          <button>Receivers</button>
+          <button>Subwoofers</button>
+        </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Casa">Casa</button>
+        <div class="sub-menu">
+          <button>Assistentes Virtuais</button>
+          <button>Lâmpadas Inteligentes</button>
+          <button>Segurança</button>
+          <button>Robôs Aspiradores</button>
+          <button>Climatização</button>
+          <button>Aspiradores</button>
+          <button>Tomadas e Energia</button>
+        </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Acessórios">Acessórios</button>
+        <div class="sub-menu">
+          <button>Cabos</button>
+          <button>Carregadores</button>
+          <button>Adaptadores</button>
+          <button>Hubs USB</button>
+          <button>Suportes</button>
+          <button>Capas e Películas</button>
+          <button>Power Banks</button>
+          <button>Armazenamento Portátil</button>
+          <button>Leitores de Cartão</button>
+          <button>Dock Stations</button>
+        </div>
+    </div>
+  </nav>
+}
+<router-outlet />
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu'))
+{
+  <div class="music-player">
+      <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">{{ musicaTocando ? '⏸' : '▶' }}</button>
+      <div class="music-controls">
+          <button class="control-button" (click)="voltarMusica()" title="Voltar ao início"> ⏮ </button>
+          <input type="range" class="progresso" min="0" [max]="duracaoMusica" [value]="tempoAtual" (input)="alterarTempo($event)">
+          <button class="control-button" (click)="proximaMusica()" title="Próxima música"> ⏭ </button>
+      </div>
+  </div>
+}

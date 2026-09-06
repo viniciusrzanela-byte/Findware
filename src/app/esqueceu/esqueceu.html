@@ -1,4 +1,31 @@
 <section class="esqueceu">
+    @if(popup)
+    {
+        <div class="fpopup">
+            <div class="popup">
+                <h2>Código enviado!</h2>
+                <p>Seu código de recuperação é:</p>
+                <strong>{{ cGerado }}</strong>
+                <button (click)="popup = false">OK</button>
+            </div>
+        </div>
+    }
     <h1>Digite seu Email</h1>
-    <input type="email" class="esquecer" placeholder="Email">
+    <input type="email" class="dEmail" placeholder="Email" [(ngModel)]="email">
+    @if (tentativa && !emailV)
+    {
+        <p class="erro">Digite um Email válido</p>
+    }
+    <button class="enviar" (click)="enviarC()">Enviar código</button>
+    @if (cEnviado)
+    {
+        <h2>Digite o código enviado ao seu Email</h2>
+        <input type="text" inputmode="numeric" maxlength="6" placeholder="Digite o código" [(ngModel)]="codigo">
+        @if (cErrado)
+        {
+            <p class="erro">O código está errado!</p>
+        }
+        <button class="reenviar" (click)="enviarC()">Não recebeu? Re-enviar código</button>
+        <button class="confirmar" (click)="confirmarC()">Confirmar</button>
+    }
 </section>

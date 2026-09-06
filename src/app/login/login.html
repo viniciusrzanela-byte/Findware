@@ -10,7 +10,7 @@
             <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha">
             <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
         </div>
-        <button class="confirmar">Confirmar</button>
+        <button [routerLink]="['/']" class="confirmar">Confirmar</button>
         <button [routerLink]="['/cadastrar']" class="cadastro">Não possui cadastro?</button>
         <button [routerLink]="['/esqueceu']" class="esqueci">Esqueceu sua senha?</button>
     </div>
