@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+  </head>
+  <body>
+    <section class="pagina-cesta">
+        <div class="conteudo-cesta">
+            <h1>Cesta</h1>
+
+            @if (carrinho.itens.length > 0)
+            {
+                <div class="cabecalho">
+                    <span>Item</span>
+                    <span>Quantidade</span>
+                    <span>Valor</span>
+                </div>
+
+                @for (item of carrinho.itens; track item.produto.id)
+                {
+                    <div class="item">
+                        <span class="nome">{{ item.produto.nome }}</span>
+                        <span class="quantidade">{{ item.quantidade }}x</span>
+                        <span class="valor">{{formatarPreco(calcularValor(item.produto.novo, item.quantidade))}}</span>
+                    </div>
+                }
+
+                <div class="total">
+                    <span>Total</span>
+                    <strong>{{ formatarPreco(calcularTotal()) }}</strong>
+                </div>
+
+                <div class="botoes">
+                    <button class="limpar" (click)="limparCesta()">Limpar cesta</button>
+                    <button class="finalizar" (click)="finalizar()">Finalizar</button>
+                </div>
+            }
+            @else
+            {
+                <div class="cesta-vazia">
+                    <h2>Sua cesta está vazia</h2>
+                    <p>Adicione produtos para eles aparecerem aqui.</p>
+                </div>
+            }
+        </div>
+        @if (mostrarPopup)
+        {
+            <div class="fundo-popup">
+                <div class="popup">
+                    <div class="icone-popup">✓</div>
+
+                    <h2>Compra finalizada!</h2>
+                    <p>Seu pedido foi realizado com sucesso.</p>
+
+                    <button (click)="fecharPopup()">Continuar</button>
+                </div>
+            </div>
+        }
+    </section>
+  </body>
+</html>

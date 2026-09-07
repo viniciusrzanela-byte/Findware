@@ -1,20 +1,37 @@
-@if (produto)
-{
-    <section class="detalhe">
-        <div class="foto">
-            <img [src]="produto.imagem" [alt]="produto.nome">
-        </div>
-        <div class="info">
-            <h1>{{ produto.nome }}</h1>
-            <h2>Sobre o produto:</h2>
-            <p>{{ produto.descricao || 'Confira os detalhes e condições da oferta.' }}</p>
-            <p class="original">{{ produto.original }}</p>
-            <p class="novo">{{ produto.novo }}</p>
-            <button class="comprar">Adicionar ao carrinho</button>
-        </div>
-    </section>
-}
-@else
-{
-    <h2>Produto não encontrado.</h2>
-}
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    @if (produto)
+    {
+        <section class="detalhe">
+            <div class="foto">
+                <img [src]="produto.imagem" [alt]="produto.nome">
+            </div>
+            <div class="info">
+                <h1>{{ produto.nome }}</h1>
+                <h2>Sobre o produto:</h2>
+                <p>{{ produto.descricao || 'Confira os detalhes e condições da oferta.' }}</p>
+                <p class="original">{{ produto.original }}</p>
+                <p class="novo">{{ produto.novo }}</p>
+                <button class="comprar" (click)="adicionarAoCarrinho()">Adicionar ao carrinho</button>
+                @if (mensagemCarrinho)
+                {
+                    <p class="mensagem-carrinho">
+                        ✓ {{ mensagemCarrinho }}
+                    </p>
+                }
+            </div>
+        </section>
+    }
+    @else
+    {
+        <h2>Produto não encontrado.</h2>
+    }
+  </body>
+</html>
+
