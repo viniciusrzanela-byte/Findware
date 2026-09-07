@@ -90,7 +90,7 @@
   </nav>
 }
 <router-outlet />
-@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu'))
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login'))
 {
   <div class="music-player">
       <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">{{ musicaTocando ? '⏸' : '▶' }}</button>
