@@ -4,8 +4,9 @@ import { Vitrine } from './vitrine/vitrine';
 import { Login } from './login/login';
 import { Cadastrar } from './cadastrar/cadastrar';
 import { Esqueceu } from './esqueceu/esqueceu';
+import { Carrinho } from './carrinho/carrinho';
 
-export const routes: Routes = 
+export const routes: Routes =
 [
     {
         path: '',
@@ -26,5 +27,9 @@ export const routes: Routes =
     {
         path: 'esqueceu',
         component: Esqueceu
+    },
+    {
+      path: 'carrinho',
+      component: Carrinho
     }
 ];

@@ -1,29 +1,39 @@
-<section class="login">
-    <div class="apresentacao">
-        <h1>Olá, Bem-vindo de Volta!</h1>
-        <img src="login.png" alt="Login">
-    </div>
-    <div class="formulario">
-        <h2>Entrar</h2>
-        <input type="email" placeholder="Email" [(ngModel)]="email">
-        @if (tentativa && !email.trim())
-        {
-            <p class="erro">O Email é obrigatório!</p>
-        }
-        @else if (tentativa && !emailV)
-        {
-            <p class="erro">Digite um Email válido</p>
-        }
-        <div class="senha">
-            <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha">
-            <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
-        </div>
-        @if (tentativa && !senha.trim())
-        {
-            <p class="erro">A senha é obrigatória!</p>
-        }
-        <button (click)="tentativa = true" [routerLink]="emailV && senha.trim() ? ['/'] : null" class="confirmar">Confirmar</button>
-        <button [routerLink]="['/cadastrar']" class="cadastro">Não possui cadastro?</button>
-        <button [routerLink]="['/esqueceu']" class="esqueci">Esqueceu sua senha?</button>
-    </div>
-</section>
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+  </head>
+  <body>
+    <section class="login">
+      <div class="apresentacao">
+          <h1>Olá, Bem-vindo de Volta!</h1>
+          <img src="login.png" alt="Login">
+      </div>
+      <div class="formulario">
+          <h2>Entrar</h2>
+          <input type="email" placeholder="Email" [(ngModel)]="email">
+          @if (tentativa && !email.trim())
+          {
+              <p class="erro">O Email é obrigatório!</p>
+          }
+          @else if (tentativa && !emailV)
+          {
+              <p class="erro">Digite um Email válido</p>
+          }
+          <div class="senha">
+              <input [type]="mostrar ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="senha">
+              <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
+          </div>
+          @if (tentativa && !senha.trim())
+          {
+              <p class="erro">A senha é obrigatória!</p>
+          }
+          <button (click)="tentativa = true" [routerLink]="emailV && senha.trim() ? ['/'] : null" class="confirmar">Confirmar</button>
+          <button [routerLink]="['/cadastrar']" class="cadastro">Não possui cadastro?</button>
+          <button [routerLink]="['/esqueceu']" class="esqueci">Esqueceu sua senha?</button>
+      </div>
+    </section>
+  </body>
+</html>

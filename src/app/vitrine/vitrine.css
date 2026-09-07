@@ -1,11 +1,11 @@
-/* =========================
-OFERTAS
-========================= */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .ofertas {
     padding: 30px 40px;
     text-align: center;
     font-size: 30px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .ofertas h2 {
@@ -13,9 +13,6 @@ OFERTAS
     margin-bottom: 20px;
 }
 
-/* =========================
-LISTA DE PRODUTOS
-========================= */
 .lista-ofertas {
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
@@ -24,9 +21,6 @@ LISTA DE PRODUTOS
     align-items: stretch;
 }
 
-/* =========================
-CARD DO PRODUTO
-========================= */
 .produto {
     position: relative;
     width: 220px;
@@ -49,9 +43,6 @@ CARD DO PRODUTO
     font-size: 16px;
 }
 
-/* =========================
-DESCONTO
-========================= */
 .desconto {
     position: absolute;
     top: 10px;
@@ -64,9 +55,6 @@ DESCONTO
     font-weight: bold;
 }
 
-/* =========================
-BOTÃO VER PRODUTO
-========================= */
 .ver-produto {
     width: 100%;
     padding: 10px;
@@ -86,9 +74,6 @@ BOTÃO VER PRODUTO
     transform: scale(1.05);
 }
 
-/* =========================
-BOTÃO VER MAIS
-========================= */
 .ver-mais {
     display: block;
     margin: 30px auto;

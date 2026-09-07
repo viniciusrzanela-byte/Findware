@@ -1,4 +1,8 @@
-header 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header
 {
     display: flex;
     align-items: center;
@@ -7,7 +11,7 @@ header
     background-color: #111827;
 }
 
-.logo 
+.logo
 {
     display: flex;
     flex-direction: column;
@@ -16,23 +20,22 @@ header
     color: #60A5FA;
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     cursor: pointer;
 }
 
-.logo img 
+.logo img
 {
     width: 75px;
     height: auto;
 }
 
-.logo span 
+.logo span
 {
     margin-top: 5px;
 }
 
-.pesquisa 
+.pesquisa
 {
     flex: 1;
     border-radius: 20px;
@@ -40,7 +43,7 @@ header
     border: 1px solid #ccc;
 }
 
-button 
+button
 {
     border: none;
     background: transparent;
@@ -48,13 +51,13 @@ button
     cursor: pointer;
 }
 
-button img 
+button img
 {
     width: 20px;
     height: 20px;
 }
 
-.OK 
+.OK
 {
     margin-left: -20px;
     font-size: 20px;
@@ -65,7 +68,7 @@ button img
     padding: 8px;
 }
 
-.botao-login 
+.botao-login
 {
     display: flex;
     flex-direction: column;
@@ -76,7 +79,7 @@ button img
     font-weight: bold;
 }
 
-.botao-login img 
+.botao-login img
 {
     width: 40px;
     height: 40px;
@@ -85,7 +88,7 @@ button img
     margin-bottom: 4px;
 }
 
-.carrinho 
+.carrinho
 {
     display: flex;
     flex-direction: column;
@@ -96,14 +99,14 @@ button img
     font-weight: bold;
 }
 
-.carrinho img 
+.carrinho img
 {
     width: 40px;
     height: 40px;
     margin-bottom: 4px;
 }
 
-nav 
+nav
 {
     display: flex;
     align-items: center;
@@ -112,7 +115,7 @@ nav
     background-color: #1E3A8A;
 }
 
-.categoria 
+.categoria
 {
     color: white;
     font-size: 16px;
@@ -122,17 +125,17 @@ nav
     transition: 0.2s;
 }
 
-.categoria:hover 
+.categoria:hover
 {
     background-color: #2563EB;
 }
 
-.item-menu 
+.item-menu
 {
     position: relative;
 }
 
-.sub-menu 
+.sub-menu
 {
     display: none;
     position: absolute;
@@ -146,7 +149,7 @@ nav
     z-index: 10;
 }
 
-.sub-menu button 
+.sub-menu button
 {
     display: block;
     width: 100%;
@@ -155,17 +158,17 @@ nav
     color: #1F2937;
 }
 
-.sub-menu button:hover 
+.sub-menu button:hover
 {
     background-color: #E5E7EB;
 }
 
-.item-menu:hover .sub-menu 
+.item-menu:hover .sub-menu
 {
     display: block;
 }
 
-.music-player 
+.music-player
 {
     display: flex;
     align-items: center;
@@ -173,7 +176,7 @@ nav
     gap: 15px;
 }
 
-.music-button 
+.music-button
 {
     display: flex;
     align-items: center;
@@ -188,25 +191,25 @@ nav
     transition: 0.2s;
 }
 
-.music-button:hover 
+.music-button:hover
 {
     background-color: #2563EB;
 }
 
-.music-button.tocando 
+.music-button.tocando
 {
     background-color: #2563EB;
     box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.25);
 }
 
-.music-controls 
+.music-controls
 {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.control-button 
+.control-button
 {
     width: 32px;
     height: 32px;
@@ -218,12 +221,12 @@ nav
     font-size: 16px;
 }
 
-.control-button:hover 
+.control-button:hover
 {
     background-color: #2563EB;
 }
 
-.progresso 
+.progresso
 {
     width: 160px;
     cursor: pointer;

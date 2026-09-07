@@ -1,4 +1,8 @@
-.login 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login
 {
     display: flex;
     max-width: 900px;
@@ -11,7 +15,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
 }
 
-.apresentacao 
+.apresentacao
 {
     width: 45%;
     display: flex;
@@ -23,21 +27,22 @@
     text-align: center;
 }
 
-.apresentacao h1 
+.apresentacao h1
 {
     color: white;
     font-size: 30px;
     margin-bottom: 35px;
 }
 
-.apresentacao img 
+.apresentacao img
 {
     width: 160px;
     height: 160px;
     object-fit: contain;
+    border-radius: 15px;
 }
 
-.formulario 
+.formulario
 {
     width: 55%;
     display: flex;
@@ -46,7 +51,7 @@
     padding: 50px;
 }
 
-.formulario h2 
+.formulario h2
 {
     color: #111827;
     font-size: 28px;
@@ -54,7 +59,7 @@
     margin-bottom: 30px;
 }
 
-.formulario input 
+.formulario input
 {
     width: 100%;
     padding: 13px 15px;
@@ -65,22 +70,22 @@
     margin-bottom: 18px;
 }
 
-.formulario input:focus 
+.formulario input:focus
 {
     border-color: #2563EB;
 }
 
-.senha 
+.senha
 {
     position: relative;
 }
 
-.senha input 
+.senha input
 {
     padding-right: 50px;
 }
 
-.ocultar 
+.ocultar
 {
     position: absolute;
     right: 12px;
@@ -91,7 +96,7 @@
     cursor: pointer;
 }
 
-.confirmar 
+.confirmar
 {
     width: 100%;
     padding: 13px;
@@ -105,12 +110,12 @@
     transition: 0.2s;
 }
 
-.confirmar:hover 
+.confirmar:hover
 {
     background-color: #2563EB;
 }
 
-.cadastro 
+.cadastro
 {
     margin-top: 20px;
     border: none;
@@ -120,7 +125,7 @@
     cursor: pointer;
 }
 
-.cadastro:hover 
+.cadastro:hover
 {
     text-decoration: underline;
 }

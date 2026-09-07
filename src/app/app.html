@@ -5,7 +5,7 @@
     <input type="text" class="pesquisa" placeholder="Pesquisar...">
     <button class="OK">OK</button>
     <button [routerLink]="['login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
-    <button title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho"><span>Carrinho</span></button>
+    <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho"><span>Carrinho</span></button>
   </header>
 }
 @if (!router.url.startsWith('/esqueceu'))
