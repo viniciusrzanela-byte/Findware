@@ -1,11 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Findware</title>
+</head>
+<body>
+@if (saudacoes)
+{
+  <div class="fsalve">
+    <div class="salve">
+      <img src="Findware.png" alt="Findware">
+      <h1>Bem-vindo à Findware!</h1>
+      <p>Encontre os melhores eletrônicos para você.</p>
+      <button (click)="fSaudacoes()">Entrar na Findware</button>
+    </div>
+  </div>
+}
 @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu'))
 {
   <header>
     <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"><span>Findware</span></a>
     <input type="text" class="pesquisa" placeholder="Pesquisar...">
     <button class="OK">OK</button>
-    <button [routerLink]="['login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
-    <button title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho"><span>Carrinho</span></button>
+    <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
+    <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"> <img src="carrinho.png" alt="Carrinho"> <span>Carrinho</span> </button>
   </header>
 }
 @if (!router.url.startsWith('/esqueceu'))
@@ -93,11 +112,8 @@
 @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login'))
 {
   <div class="music-player">
-      <button class="music-button" [class.tocando]="musicaTocando" (click)="toggleMusica()" [title]="musicaTocando ? 'Pausar música' : 'Tocar música'">{{ musicaTocando ? '⏸' : '▶' }}</button>
-      <div class="music-controls">
-          <button class="control-button" (click)="voltarMusica()" title="Voltar ao início"> ⏮ </button>
-          <input type="range" class="progresso" min="0" [max]="duracaoMusica" [value]="tempoAtual" (input)="alterarTempo($event)">
-          <button class="control-button" (click)="proximaMusica()" title="Próxima música"> ⏭ </button>
-      </div>
+    <button class="music-button" (click)="toggleMudo()" [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
   </div>
 }
+</body>
+</html>
