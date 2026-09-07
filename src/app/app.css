@@ -1,234 +1,262 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body
+{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header 
+{
+display: flex;
+align-items: center;
+gap: 30px;
+padding: 20px 40px;
+background-color: #111827;
 }
 
-header
+.logo 
 {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 20px 40px;
-    background-color: #111827;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #60A5FA;
+font-size: 20px;
+font-weight: bold;
+text-decoration: none;
+cursor: pointer;
 }
 
-.logo
+.logo img 
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #60A5FA;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
+width: 75px;
+height: auto;
 }
 
-.logo img
+.logo span 
 {
-    width: 75px;
-    height: auto;
+margin-top: 5px;
 }
 
-.logo span
+.pesquisa 
 {
-    margin-top: 5px;
+flex: 1;
+border-radius: 20px;
+padding: 10px 15px;
+border: 1px solid #ccc;
 }
 
-.pesquisa
+button 
 {
-    flex: 1;
-    border-radius: 20px;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
+border: none;
+background: transparent;
+padding: 0;
+cursor: pointer;
 }
 
-button
+button img 
 {
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
+width: 20px;
+height: 20px;
 }
 
-button img
+.OK 
 {
-    width: 20px;
-    height: 20px;
+margin-left: -20px;
+font-size: 20px;
+color: #60A5FA;
+font-weight: bold;
+background-color: #1E3A8A;
+border-radius: 50%;
+padding: 8px;
 }
 
-.OK
+.botao-login 
 {
-    margin-left: -20px;
-    font-size: 20px;
-    color: #60A5FA;
-    font-weight: bold;
-    background-color: #1E3A8A;
-    border-radius: 50%;
-    padding: 8px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #60A5FA;
+font-size: 14px;
+font-weight: bold;
 }
 
-.botao-login
+.botao-login img 
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #60A5FA;
-    font-size: 14px;
-    font-weight: bold;
+width: 40px;
+height: 40px;
+border-radius: 50%;
+object-fit: cover;
+margin-bottom: 4px;
 }
 
-.botao-login img
+.carrinho 
 {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 4px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #60A5FA;
+font-size: 14px;
+font-weight: bold;
 }
 
-.carrinho
+.carrinho img 
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #60A5FA;
-    font-size: 14px;
-    font-weight: bold;
+width: 40px;
+height: 40px;
+margin-bottom: 4px;
 }
 
-.carrinho img
+nav 
 {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 4px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+padding: 20px 40px;
+background-color: #1E3A8A;
 }
 
-nav
+.categoria 
 {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 20px 40px;
-    background-color: #1E3A8A;
+color: white;
+font-size: 16px;
+font-weight: bold;
+padding: 10px 20px;
+border-radius: 8px;
+transition: 0.2s;
 }
 
-.categoria
+.categoria:hover 
 {
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: 0.2s;
+background-color: #2563EB;
 }
 
-.categoria:hover
+.item-menu 
 {
-    background-color: #2563EB;
+position: relative;
 }
 
-.item-menu
+.sub-menu 
 {
-    position: relative;
+display: none;
+position: absolute;
+top: 100%;
+left: 0;
+background-color: #FFFFFF;
+min-width: 180px;
+padding: 10px 0;
+border-radius: 5px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+z-index: 10;
 }
 
-.sub-menu
+.sub-menu button 
 {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #FFFFFF;
-    min-width: 180px;
-    padding: 10px 0;
-    border-radius: 5px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    z-index: 10;
+display: block;
+width: 100%;
+padding: 10px 20px;
+text-align: left;
+color: #1F2937;
 }
 
-.sub-menu button
+.sub-menu button:hover 
 {
-    display: block;
-    width: 100%;
-    padding: 10px 20px;
-    text-align: left;
-    color: #1F2937;
+background-color: #E5E7EB;
 }
 
-.sub-menu button:hover
+.item-menu:hover .sub-menu 
 {
-    background-color: #E5E7EB;
+display: block;
 }
 
-.item-menu:hover .sub-menu
+.music-player 
 {
-    display: block;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 15px;
 }
 
-.music-player
+.music-button 
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+background-color: #1E3A8A;
+color: white;
+font-size: 18px;
+cursor: pointer;
+transition: 0.2s;
 }
 
-.music-button
+.music-button:hover 
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: #1E3A8A;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.2s;
+background-color: #2563EB;
 }
 
-.music-button:hover
+.fsalve
 {
-    background-color: #2563EB;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: rgba(17, 24, 39, 0.85);
+z-index: 9999;
 }
 
-.music-button.tocando
+.salve
 {
-    background-color: #2563EB;
-    box-shadow: 0 0 0 5px rgba(37, 99, 235, 0.25);
+width: 100%;
+max-width: 450px;
+padding: 40px;
+background-color: white;
+border-radius: 14px;
+text-align: center;
+box-shadow: 0 10px 35px rgba(0, 0, 0, 0.30);
 }
 
-.music-controls
+.salve img
 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+width: 110px;
+height: auto;
+margin-bottom: 15px;
 }
 
-.control-button
+.salve h1
 {
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 50%;
-    background-color: #1E3A8A;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
+margin: 10px 0;
+color: #111827;
+font-size: 30px;
 }
 
-.control-button:hover
+.salve p
 {
-    background-color: #2563EB;
+margin-bottom: 30px;
+color: #6B7280;
+font-size: 16px;
 }
 
-.progresso
+.salve button
 {
-    width: 160px;
-    cursor: pointer;
-    accent-color: #1E3A8A;
+width: 100%;
+padding: 14px;
+border: none;
+border-radius: 7px;
+background-color: #1E3A8A;
+color: white;
+font-size: 17px;
+font-weight: bold;
+cursor: pointer;
+transition: 0.2s;
+}
+
+.salve button:hover
+{
+background-color: #2563EB;
 }
