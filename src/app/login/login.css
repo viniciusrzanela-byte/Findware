@@ -75,7 +75,7 @@
     position: relative;
 }
 
-.campo-senha input 
+.senha input 
 {
     padding-right: 50px;
 }
@@ -138,4 +138,12 @@
 .esqueci:hover
 {
     text-decoration: underline;
+}
+
+.erro
+{
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 5px 0 10px;
 }
