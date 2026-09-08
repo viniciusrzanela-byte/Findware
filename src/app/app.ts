@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ templateUrl: './app.html',
 styleUrl: './app.css'
 })
 
-export class App
+export class App implements OnInit
 {
     protected readonly title = signal('eletronicos');
     constructor(public router: Router){}
@@ -16,6 +16,15 @@ export class App
     musica = 'musica1.mp3';
     mutado = false;
     saudacoes = true;
+    ngOnInit()
+    {
+        document.body.style.overflow = 'hidden';
+        const navegacao = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+        if (navegacao?.type === 'reload')
+        {
+            this.router.navigate(['/']);
+        }
+    }
     tocarMusica()
     {
         this.audio?.pause();
@@ -39,6 +48,7 @@ export class App
     fSaudacoes()
     {
         this.saudacoes = false;
+        document.body.style.overflow = '';
         this.tocarMusica();
     }
 }
