@@ -18,6 +18,8 @@ export class App implements OnInit
     saudacoes = true;
     ngOnInit()
     {
+        history.scrollRestoration = 'manual';
+        window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
         const navegacao = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
         if (navegacao?.type === 'reload')
