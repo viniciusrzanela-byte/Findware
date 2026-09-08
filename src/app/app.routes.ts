@@ -5,6 +5,7 @@ import { Login } from './login/login';
 import { Cadastrar } from './cadastrar/cadastrar';
 import { Esqueceu } from './esqueceu/esqueceu';
 import { Carrinho } from './carrinho/carrinho';
+import { Busca } from './busca/busca';
 
 export const routes: Routes =
 [
@@ -31,5 +32,9 @@ export const routes: Routes =
     {
       path: 'carrinho',
       component: Carrinho
+    },
+    {
+        path: 'busca',
+        component: Busca
     }
 ];

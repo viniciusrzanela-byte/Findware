@@ -21,8 +21,48 @@
         {
             <header>
                 <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"><span>Findware</span></a>
-                <input type="text" class="pesquisa" placeholder="Pesquisar...">
-                <button class="OK">OK</button>
+                <div class="area-pesquisa">
+                    <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()" (keyup.enter)="pesquisar()">
+                    <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
+                    @if (aberta)
+                    {
+                        <div class="painel-pesquisa">
+                            @if (!pesquisa.trim())
+                            {
+                                <h3>Mais buscados</h3>
+                                <button class="termo" (click)="selecionar('iPhone')"> <span>1</span>iPhones</button>
+                                <button class="termo" (click)="selecionar('Samsung Galaxy')"> <span>2</span>Samsung Galaxy</button>
+                                <button class="termo" (click)="selecionar('PlayStation')"> <span>3</span>PlayStation</button>
+                                <button class="termo" (click)="selecionar('Notebook')"> <span>4</span>Notebooks</button>
+                                <button class="termo" (click)="selecionar('SSD')"> <span>5</span>SSD</button>
+                            }
+                            @else
+                            {
+                                <div class="sugestoes">
+                                    <div class="lista-sugestoes">
+                                        <h3>Sugestões</h3>
+                                        @for (produto of resultados; track produto.id)
+                                        {
+                                            <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
+                                        }
+                                    </div>
+                                    <div class="produtos-sugeridos">
+                                        <h3>Produtos sugeridos</h3>
+                                        <div class="lista-sugeridos">
+                                            @for (produto of resultados; track produto.id)
+                                            {
+                                                <div class="produto-sugerido" (click)="abrir(produto.id)">
+                                                    <img [src]="produto.imagem" [alt]="produto.nome"> <p>{{ produto.nome }}</p>
+                                                    <strong>{{ produto.novo }}</strong>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
                 <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
                 <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"> <img src="carrinho.png" alt="Carrinho"> <span>Carrinho</span> </button>
             </header>

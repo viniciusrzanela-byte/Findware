@@ -36,12 +36,138 @@ header
     margin-top: 5px;
 }
 
-.pesquisa 
+.pesquisa
+{
+    width: 100%;
+    padding: 12px 50px 12px 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.area-pesquisa
+{
+    position: relative;
+    flex: 1;
+}
+
+.painel-pesquisa
+{
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.20);
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.painel-pesquisa h3
+{
+    margin: 0;
+    padding: 18px;
+    color: #111827;
+    font-size: 18px;
+}
+
+.termo
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    background-color: white;
+    color: #1F2937;
+    text-align: left;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.termo:hover
+{
+    background-color: #f3f4f6;
+}
+
+.termo span
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 22px;
+    border-radius: 20px;
+    background-color: #1E3A8A;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.sugestoes
+{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+}
+
+.lista-sugestoes
+{
+    border-right: 1px solid #e5e7eb;
+}
+
+.lista-sugestoes button
+{
+    display: block;
+    width: 100%;
+    padding: 12px 18px;
+    border: none;
+    background-color: white;
+    color: #1F2937;
+    text-align: left;
+    cursor: pointer;
+}
+
+.lista-sugestoes button:hover
+{
+    background-color: #f3f4f6;
+}
+
+.lista-sugeridos
+{
+    display: flex;
+    gap: 20px;
+    padding: 10px 20px 25px;
+}
+
+.produto-sugerido
 {
     flex: 1;
-    border-radius: 20px;
-    padding: 10px 15px;
-    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+}
+
+.produto-sugerido img
+{
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+}
+
+.produto-sugerido p
+{
+    color: #111827;
+    font-size: 13px;
+}
+
+.produto-sugerido strong
+{
+    color: #1E3A8A;
+    font-size: 17px;
 }
 
 button 
@@ -58,15 +184,18 @@ button img
     height: 20px;
 }
 
-.OK 
+.OK
 {
-    margin-left: -20px;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
     font-size: 20px;
-    color: #60A5FA;
-    font-weight: bold;
-    background-color: #1E3A8A;
-    border-radius: 50%;
-    padding: 8px;
+    cursor: pointer;
 }
 
 .botao-login 

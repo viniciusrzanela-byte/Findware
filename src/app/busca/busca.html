@@ -1,0 +1,27 @@
+<section class="busca">
+    <h1>Resultados para: "{{ termo }}"</h1>
+    @if (resultados.length > 0)
+    {
+        <div class="lista-produtos">
+            @for (produto of resultados; track produto.id)
+            {
+                <div class="produto">
+                    <span class="desconto">-{{ produto.desconto }}%</span>
+                    <img [src]="produto.imagem" [alt]="produto.nome" (error)="Erro($event)">
+                    <h3>{{ produto.nome }}</h3>
+                    <p class="original">{{ produto.original }}</p>
+                    <p class="novo">{{ produto.novo }}</p>
+                    <button [routerLink]="['/detalhe', produto.id]">Ver Produto</button>
+                </div>
+            }
+        </div>
+    }
+    @else
+    {
+        <div class="sem-resultados">
+
+            <h2>Nenhum produto encontrado</h2>
+            <p>Tente pesquisar por outro nome, categoria ou tipo de produto.</p>
+        </div>
+    }
+</section>
