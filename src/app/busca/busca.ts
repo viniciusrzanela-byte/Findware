@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Oferta, OFERTAS } from '../produto';
 
@@ -13,7 +13,7 @@ export class Busca
 {
   termo = '';
   resultados: Oferta[] = [];
-  constructor(private rota: ActivatedRoute)
+  constructor(private rota: ActivatedRoute, private detector: ChangeDetectorRef)
   {
     this.rota.queryParamMap.subscribe(parametros =>
     {
@@ -21,6 +21,7 @@ export class Busca
       const pesquisa = this.termo.toLowerCase();
       this.resultados = OFERTAS.filter(produto => produto.nome.toLowerCase().includes(pesquisa) || produto.tipo.toLowerCase().includes(pesquisa) || produto.categoria.toLowerCase().includes(pesquisa));
       window.scrollTo(0, 0);
+      this.detector.detectChanges();
     }
     );
   }

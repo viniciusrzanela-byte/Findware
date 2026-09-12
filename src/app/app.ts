@@ -1,5 +1,5 @@
 import { Component, OnInit, signal } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet, NavigationEnd } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { OFERTAS } from './produto';
 
@@ -25,6 +25,14 @@ export class App implements OnInit
         history.scrollRestoration = 'manual';
         window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
+        this.router.events.subscribe(event =>
+        {
+            if (event instanceof NavigationEnd && event.urlAfterRedirects === '/')
+            {
+                this.aberta = false;
+                this.pesquisa = '';
+            }
+        });
         const navegacao = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
         if (navegacao?.type === 'reload')
         {
@@ -38,6 +46,12 @@ export class App implements OnInit
         {
             this.aberta = false;
             this.router.navigateByUrl('/busca?q=' + encodeURIComponent(termo));
+        }
+        else
+        {
+            this.aberta = false;
+            this.pesquisa = '';
+            this.router.navigate(['/']);
         }
     }
     tocarMusica()
