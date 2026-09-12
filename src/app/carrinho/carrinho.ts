@@ -62,6 +62,7 @@ export class Carrinho
         {
             return;
         }
+        this.carrinho.limpar();
 
         this.mostrarPopup = true;
     }
