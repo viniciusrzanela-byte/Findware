@@ -146,7 +146,7 @@ const ofertasSemId: OfertaSemId[] =
       descricao: 'Console compacto e totalmente digital, desenvolvido para oferecer uma experiência de nova geração em um formato menor e adequado para diferentes ambientes.' },
 
     // GAMES - JOGOS
-    { categoria: 'Games', tipo: 'Jogos', desconto: 25, imagem: 'elden-ring.png', nome: 'Elden Ring (PlayStation 5)', original: 'R$ 299,00',
+    { categoria: 'Games', tipo: 'Jogos', desconto: 25, imagem: 'elden-ring.png', nome: 'Elden Ring', original: 'R$ 299,00',
       novo: 'R$ 224,25',
       descricao: 'RPG de ação ambientado em um vasto mundo de fantasia, com exploração livre, combates desafiadores e grande variedade de personagens, inimigos e equipamentos.' },
     { categoria: 'Games', tipo: 'Jogos', desconto: 20, imagem: 'cyberpunk-ultimate.png', nome: 'Cyberpunk 2077 Ultimate Edition', original: 'R$ 349,00',
