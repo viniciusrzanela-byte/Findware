@@ -1,107 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Findware</title>
-    </head>
-    <body>
-        @if (saudacoes)
-        {
-            <div class="fsalve">
-                <div class="salve">
-                    <img src="Findware.png" alt="Findware">
-                    <h1>Bem-vindo à Findware!</h1>
-                    <p>Encontre os melhores eletrônicos para você.</p>
-                    <button (click)="fSaudacoes()">Entrar na Findware</button>
-                </div>
-            </div>
-        }
-        @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu'))
-        {
-            <header>
-                <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"><span>Findware</span></a>
-                <div class="area-pesquisa">
-                    <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()" (keyup.enter)="pesquisar()">
-                    <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
-                    @if (aberta)
-                    {
-                        <div class="painel-pesquisa">
-                            @if (!pesquisa.trim())
-                            {
-                                <h3>Mais buscados</h3>
-                                <button class="termo" (click)="selecionar('iPhone')"> <span>1</span>iPhones</button>
-                                <button class="termo" (click)="selecionar('Samsung Galaxy')"> <span>2</span>Samsung Galaxy</button>
-                                <button class="termo" (click)="selecionar('PlayStation')"> <span>3</span>PlayStation</button>
-                                <button class="termo" (click)="selecionar('Notebook')"> <span>4</span>Notebooks</button>
-                                <button class="termo" (click)="selecionar('SSD')"> <span>5</span>SSD</button>
-                            }
-                            @else
-                            {
-                                <div class="sugestoes">
-                                    <div class="lista-sugestoes">
-                                        <h3>Sugestões</h3>
-                                        @for (produto of resultados; track produto.id)
-                                        {
-                                            <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
-                                        }
-                                    </div>
-                                    <div class="produtos-sugeridos">
-                                        <h3>Produtos sugeridos</h3>
-                                        <div class="lista-sugeridos">
-                                            @for (produto of resultados; track produto.id)
-                                            {
-                                                <div class="produto-sugerido" (click)="abrir(produto.id)">
-                                                    <img [src]="produto.imagem" [alt]="produto.nome"> <p>{{ produto.nome }}</p>
-                                                    <strong>{{ produto.novo }}</strong>
-                                                </div>
-                                            }
-                                        </div>
-                                    </div>
-                                </div>
-                            }
-                        </div>
+  </head>
+
+  <body>
+    @if (saudacoes) {
+      <div class="fsalve">
+        <div class="salve">
+          <img src="Findware.png" alt="Findware" />
+          <h1>Bem-vindo à Findware!</h1>
+          <p>Encontre os melhores eletrônicos para você.</p>
+          <button (click)="fSaudacoes()">Entrar na Findware</button>
+        </div>
+      </div>
+    }
+
+    @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu')) {
+      <header>
+        <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"/><span>Findware</span></a>
+
+        <div class="area-pesquisa">
+          <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()"(keyup.enter)="pesquisar()"/>
+          <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
+          @if (aberta) {
+            <div class="painel-pesquisa">
+              @if (!pesquisa.trim()) {
+                <h3>Mais buscados</h3>
+
+                <button class="termo" (click)="selecionar('iPhone')"><span>1</span>iPhones</button>
+                <button class="termo" (click)="selecionar('Samsung Galaxy')"><span>2</span>Samsung Galaxy</button>
+                <button class="termo" (click)="selecionar('PlayStation')"><span>3</span>PlayStation</button>
+                <button class="termo" (click)="selecionar('Notebook')"><span>4</span>Notebooks</button>
+                <button class="termo" (click)="selecionar('SSD')"><span>5</span>SSD</button>
+              } @else {
+                <div class="sugestoes">
+                  <div class="lista-sugestoes">
+                    <h3>Sugestões</h3>
+                    @for (produto of resultados; track produto.id) {
+                      <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
                     }
+                  </div>
+
+                  <div class="produtos-sugeridos">
+                    <h3>Produtos sugeridos</h3>
+                    <div class="lista-sugeridos">
+                      @for (produto of resultados; track produto.id) {
+                        <div class="produto-sugerido" (click)="abrir(produto.id)">
+                          <img [src]="produto.imagem" [alt]="produto.nome" />
+                          <p>{{ produto.nome }}</p>
+                          <strong>{{ produto.novo }}</strong>
+                        </div>
+                      }
+                    </div>
+                  </div>
                 </div>
-                <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar"><span>Entrar</span></button>
-                <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"> <img src="carrinho.png" alt="Carrinho"> <span>Carrinho</span> </button>
-            </header>
-        }
-        @if (!router.url.startsWith('/esqueceu'))
-        {
-            <nav>
+              }
+            </div>
+          }
+        </div>
 
-    <!-- DISPOSITIVOS MÓVEIS -->
-    <div class="item-menu">
-
-        <button
-            class="categoria"
-            title="Móveis"
-            (click)="selecionar('Móveis')">
+        <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar" /><span>Entrar</span></button>
+        <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho" /> <span>Carrinho</span></button>
+      </header>
+    }
+    @if (!router.url.startsWith('/esqueceu')) {
+      <nav>
+        <div class="item-menu">
+          <button class="categoria" title="Móveis" (click)="selecionar('Móveis')">
             Dispositivos Móveis
-        </button>
+          </button>
 
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('Celulares')">Celulares</button>
             <button (click)="selecionar('Tablets')">Tablets</button>
             <button (click)="selecionar('Notebooks')">Notebooks</button>
             <button (click)="selecionar('Smartwatches')">Smartwatches</button>
+          </div>
         </div>
 
-    </div>
-
-
-    <!-- COMPUTADORES -->
-    <div class="item-menu">
-
-        <button
-            class="categoria"
-            title="Computadores"
-            (click)="selecionar('Computadores')">
+        <div class="item-menu">
+          <button class="categoria" title="Computadores" (click)="selecionar('Computadores')">
             Computadores
-        </button>
+          </button>
 
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('Processadores')">Processadores</button>
             <button (click)="selecionar('Placas-mãe')">Placas-mãe</button>
             <button (click)="selecionar('Memórias RAM')">Memórias RAM</button>
@@ -112,42 +97,24 @@
             <button (click)="selecionar('Refrigeração')">Refrigeração</button>
             <button (click)="selecionar('Placas de expansão')">Placas de expansão</button>
             <button (click)="selecionar('Monitores')">Monitores</button>
+          </div>
         </div>
 
-    </div>
+        <div class="item-menu">
+          <button class="categoria" title="Games" (click)="selecionar('Games')">Games</button>
 
-
-    <!-- GAMES -->
-    <div class="item-menu">
-
-        <button
-            class="categoria"
-            title="Games"
-            (click)="selecionar('Games')">
-            Games
-        </button>
-
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('PlayStation')">PlayStation</button>
             <button (click)="selecionar('Nintendo')">Nintendo</button>
             <button (click)="selecionar('Xbox')">Xbox</button>
             <button (click)="selecionar('Jogos')">Jogos</button>
+          </div>
         </div>
 
-    </div>
+        <div class="item-menu">
+          <button class="categoria" title="TV e Áudio" (click)="selecionar('TV e Áudio')">TV e Áudio</button>
 
-
-    <!-- TV E ÁUDIO -->
-    <div class="item-menu">
-
-        <button
-            class="categoria"
-            title="TV e Áudio"
-            (click)="selecionar('TV e Áudio')">
-            TV e Áudio
-        </button>
-
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('Smart TVs')">Smart TVs</button>
             <button (click)="selecionar('Projetores')">Projetores</button>
             <button (click)="selecionar('Soundbars')">Soundbars</button>
@@ -159,22 +126,13 @@
             <button (click)="selecionar('Amplificadores')">Amplificadores</button>
             <button (click)="selecionar('Receivers')">Receivers</button>
             <button (click)="selecionar('Subwoofers')">Subwoofers</button>
+          </div>
         </div>
 
-    </div>
+        <div class="item-menu">
+          <button class="categoria" title="Casa" (click)="selecionar('Casa')">Casa</button>
 
-
-    <!-- CASA -->
-    <div class="item-menu">
-
-        <button
-            class="categoria"
-            title="Casa"
-            (click)="selecionar('Casa')">
-            Casa
-        </button>
-
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('Assistentes Virtuais')">Assistentes Virtuais</button>
             <button (click)="selecionar('Lâmpadas Inteligentes')">Lâmpadas Inteligentes</button>
             <button (click)="selecionar('Segurança')">Segurança</button>
@@ -182,17 +140,13 @@
             <button (click)="selecionar('Climatização')">Climatização</button>
             <button (click)="selecionar('Aspiradores')">Aspiradores</button>
             <button (click)="selecionar('Tomadas e Energia')">Tomadas e Energia</button>
+          </div>
         </div>
 
-    </div>
+        <div class="item-menu">
+          <button class="categoria" title="Acessórios" (click)="selecionar('Acessórios')">Acessórios</button>
 
-
-    <!-- ACESSÓRIOS -->
-    <div class="item-menu">
-
-        <button class="categoria" title="Acessórios" (click)="selecionar('Acessórios')">Acessórios</button>
-
-        <div class="sub-menu">
+          <div class="sub-menu">
             <button (click)="selecionar('Cabos')">Cabos</button>
             <button (click)="selecionar('Carregadores')">Carregadores</button>
             <button (click)="selecionar('Adaptadores')">Adaptadores</button>
@@ -203,18 +157,15 @@
             <button (click)="selecionar('Armazenamento Portátil')">Armazenamento Portátil</button>
             <button (click)="selecionar('Leitores de Cartão')">Leitores de Cartão</button>
             <button (click)="selecionar('Dock Stations')">Dock Stations</button>
+          </div>
         </div>
-
-    </div>
-
-</nav>
-        }
-        <router-outlet />
-        @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login'))
-        {
-            <div class="music-player">
-                <button class="music-button" (click)="toggleMudo()" [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
-            </div>
-        }
-    </body>
+      </nav>
+    }
+    <router-outlet/>
+    @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login')) {
+      <div class="music-player">
+        <button class="music-button" (click)="toggleMudo()"  [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
+      </div>
+    }
+  </body>
 </html>

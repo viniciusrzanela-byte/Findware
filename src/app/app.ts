@@ -17,7 +17,7 @@ export class App implements OnInit
     audio?: HTMLAudioElement;
     mutado = false;
     saudacoes = true;
-    musica = 'musica1.mp3';
+    musica = 'musica2.mp3';
     pesquisa = '';
     aberta = false;
     ngOnInit()
