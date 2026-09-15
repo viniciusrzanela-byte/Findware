@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastrar',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './cadastrar.html',
   styleUrl: './cadastrar.css',
 })
-export class Cadastrar {
+
+export class Cadastrar
+{
   nome = '';
   nomeMeio = '';
   sobrenome = '';
@@ -23,51 +25,82 @@ export class Cadastrar {
   DDIe = '🇧🇷 +55';
   telefone = '';
 
-  vNome(valor: string): boolean {
+  constructor(private router: Router){}
+  vNome(valor: string): boolean
+  {
     return /^[\p{L}\s]+$/u.test(valor.trim());
   }
-  vEmail(valor: string): boolean {
+  vEmail(valor: string): boolean
+  {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
   }
-  Validar(cpf: string): boolean {
+  Validar(cpf: string): boolean
+  {
     cpf = cpf.trim();
-    const formato = /^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-    if (!formato.test(cpf)) {
+    const formato =
+      /^\d{11}$|^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+
+    if (!formato.test(cpf))
+    {
       return false;
     }
-    const numeros = cpf.replace(/\D/g, '');
-    if (/^(\d)\1{10}$/.test(numeros)) {
+    const numeros =
+      cpf.replace(/\D/g, '');
+
+    if (/^(\d)\1{10}$/.test(numeros))
+    {
       return false;
     }
-    const calcular = (tamanho: number) => {
+    const calcular = (tamanho: number) =>
+    {
       let soma = 0;
-      for (let i = 0; i < tamanho; i++) {
-        soma += Number(numeros[i]) * (tamanho + 1 - i);
+      for (let i = 0; i < tamanho; i++)
+      {
+        soma +=
+          Number(numeros[i]) *
+          (tamanho + 1 - i);
       }
-      const resto = (soma * 10) % 11;
-      return resto === 10 ? 0 : resto;
+      const resto =
+        (soma * 10) % 11;
+
+      return resto === 10
+        ? 0
+        : resto;
     };
-    return calcular(9) === Number(numeros[9]) && calcular(10) === Number(numeros[10]);
+    return (
+      calcular(9) === Number(numeros[9]) &&
+      calcular(10) === Number(numeros[10])
+    );
   }
-  get nomeV() {
+  get nomeV()
+  {
     return this.vNome(this.nome);
   }
-  get nomeMeioV() {
-    return !this.nomeMeio.trim() || this.vNome(this.nomeMeio);
+  get nomeMeioV()
+  {
+    return (
+      !this.nomeMeio.trim() ||
+      this.vNome(this.nomeMeio)
+    );
   }
-  get sobrenomeV() {
+  get sobrenomeV()
+  {
     return this.vNome(this.sobrenome);
   }
-  get valido() {
+  get valido()
+  {
     return this.Validar(this.cpf);
   }
-  get telefoneV() {
+  get telefoneV()
+  {
     return /^\d{8,15}$/.test(this.telefone);
   }
-  get emailV() {
+  get emailV()
+  {
     return this.vEmail(this.email);
   }
-  get senhaV() {
+  get senhaV()
+  {
     const senha = this.senha;
     return (
       senha.length >= 8 &&
@@ -77,7 +110,26 @@ export class Cadastrar {
       /[^A-Za-z0-9]/.test(senha)
     );
   }
-  get iguais() {
+  get iguais()
+  {
     return this.senha === this.confirmar;
+  }
+  cadastrar()
+  {
+    this.tentativa = true;
+    if (
+      this.nomeV &&
+      this.nomeMeioV &&
+      this.sobrenomeV &&
+      this.valido &&
+      this.telefoneV &&
+      this.emailV &&
+      this.senhaV &&
+      this.confirmar.trim() &&
+      this.iguais
+    )
+    {
+      this.router.navigate(['/']);
+    }
   }
 }

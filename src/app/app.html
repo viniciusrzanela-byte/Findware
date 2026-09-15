@@ -21,7 +21,6 @@
         placeholder="Pesquisar..."
         [(ngModel)]="pesquisa"
         (focus)="aberta = true"
-        (blur)="fechar()"
         (keyup.enter)="pesquisar()"
       />
       <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
@@ -169,7 +168,7 @@
     <button
       class="music-button"
       (click)="toggleMudo()"
-      [title]="mutado ? 'Ativar som' : 'Mutar som'"
+      [title]="mutado || volume === 0 ? 'Ativar som' : 'Mutar som'"
     >
       {{ mutado || volume === 0 ? '🔇' : '🔊' }}
     </button>

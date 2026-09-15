@@ -122,11 +122,6 @@ export class App implements OnInit {
     this.aberta = false;
     this.router.navigate(['/detalhe', id]);
   }
-  fechar() {
-    setTimeout(() => {
-      this.aberta = false;
-    }, 150);
-  }
   selecionarTipo(tipo: string) {
     this.pesquisa = tipo;
     this.aberta = false;
