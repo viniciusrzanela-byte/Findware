@@ -1,23 +1,30 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { App } from './app';
 
-describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+describe('App', () => 
+{
+  beforeEach(async () => 
+    {
+    await TestBed.configureTestingModule
+    ({
       imports: [App],
+      providers: [provideRouter([])]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  it('deve criar o aplicativo', () => 
+  {
     const fixture = TestBed.createComponent(App);
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('deve mostrar a saudação inicial', async () => 
+  {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, eletronicos');
+    expect(compiled.querySelector('.salve h1')?.textContent).toContain('Bem-vindo à Findware!');
   });
 });

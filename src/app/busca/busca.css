@@ -23,11 +23,12 @@
 {
     margin-top: 0;
     margin-bottom: 35px;
+    padding-bottom: 15px;
     color: #111827;
+    border-bottom: 3px solid #1E3A8A;
     font-size: 30px;
     font-weight: bold;
-    border-bottom: 3px solid #1E3A8A;
-    padding-bottom: 15px;
+    overflow-wrap: anywhere;
 }
 
 .lista-produtos
@@ -42,6 +43,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    min-width: 0;
     min-height: 430px;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.97);
@@ -74,6 +76,7 @@
     font-size: 17px;
     line-height: 1.4;
     text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .desconto
@@ -131,10 +134,10 @@
 .sem-resultados
 {
     padding: 70px 20px;
-    text-align: center;
     background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 12px;
     border: 1px dashed #9ca3af;
+    border-radius: 12px;
+    text-align: center;
 }
 
 .sem-resultados h2
@@ -152,7 +155,7 @@
     font-size: 16px;
 }
 
-@media (max-width: 1000px)
+@media (max-width: 1050px)
 {
     .lista-produtos
     {
@@ -160,36 +163,56 @@
     }
 }
 
-@media (max-width: 750px)
+@media (max-width: 800px)
 {
     .busca
     {
         width: 96%;
-
         padding: 25px 20px;
     }
+
     .lista-produtos
     {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .busca h1
     {
         font-size: 25px;
     }
 }
 
-@media (max-width: 500px)
+@media (max-width: 520px)
 {
     :host
     {
         padding: 25px 10px;
     }
+
+    .busca
+    {
+        width: 100%;
+        padding: 20px 15px;
+    }
+
+    .busca h1
+    {
+        margin-bottom: 25px;
+        font-size: 21px;
+    }
+
     .lista-produtos
     {
         grid-template-columns: 1fr;
     }
+
     .produto
     {
         min-height: 400px;
+    }
+
+    .produto img
+    {
+        height: 200px;
     }
 }

@@ -2,25 +2,34 @@
 {
     box-sizing: border-box;
 }
-
 html,
 body
 {
     margin: 0;
     padding: 0;
-    background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.55)),url('/fundo.gif');
+    min-height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(rgba(17, 24, 39, 0.55), rgba(17, 24, 39, 0.55)), url('/fundo.gif');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
+body
+{
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+button,
+input
+{
+    font-family: inherit;
+}
 .original
 {
     color: gray;
     text-decoration: line-through;
 }
-
 .novo
 {
     color: #1E3A8A;

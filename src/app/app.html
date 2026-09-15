@@ -1,171 +1,151 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Findware</title>
-  </head>
+@if (saudacoes)
+{
+  <div class="fsalve">
+    <div class="salve">
+      <img src="Findware.png" alt="Findware" />
+      <h1>Bem-vindo à Findware!</h1>
+      <p>Encontre os melhores eletrônicos para você.</p>
+      <button (click)="fSaudacoes()">Entrar na Findware</button>
+    </div>
+  </div>
+}
 
-  <body>
-    @if (saudacoes) {
-      <div class="fsalve">
-        <div class="salve">
-          <img src="Findware.png" alt="Findware" />
-          <h1>Bem-vindo à Findware!</h1>
-          <p>Encontre os melhores eletrônicos para você.</p>
-          <button (click)="fSaudacoes()">Entrar na Findware</button>
-        </div>
-      </div>
-    }
-
-    @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu')) {
-      <header>
-        <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"/><span>Findware</span></a>
-
-        <div class="area-pesquisa">
-          <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()"(keyup.enter)="pesquisar()"/>
-          <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
-          @if (aberta) {
-            <div class="painel-pesquisa">
-              @if (!pesquisa.trim()) {
-                <h3>Mais buscados</h3>
-
-                <button class="termo" (click)="selecionar('iPhone')"><span>1</span>iPhones</button>
-                <button class="termo" (click)="selecionar('Samsung Galaxy')"><span>2</span>Samsung Galaxy</button>
-                <button class="termo" (click)="selecionar('PlayStation')"><span>3</span>PlayStation</button>
-                <button class="termo" (click)="selecionar('Notebook')"><span>4</span>Notebooks</button>
-                <button class="termo" (click)="selecionar('SSD')"><span>5</span>SSD</button>
-              } @else {
-                <div class="sugestoes">
-                  <div class="lista-sugestoes">
-                    <h3>Sugestões</h3>
-                    @for (produto of resultados; track produto.id) {
-                      <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
-                    }
-                  </div>
-
-                  <div class="produtos-sugeridos">
-                    <h3>Produtos sugeridos</h3>
-                    <div class="lista-sugeridos">
-                      @for (produto of resultados; track produto.id) {
-                        <div class="produto-sugerido" (click)="abrir(produto.id)">
-                          <img [src]="produto.imagem" [alt]="produto.nome" />
-                          <p>{{ produto.nome }}</p>
-                          <strong>{{ produto.novo }}</strong>
-                        </div>
-                      }
-                    </div>
-                  </div>
-                </div>
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu')) 
+{
+  <header>
+    <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"/><span>Findware</span></a>
+    <div class="area-pesquisa">
+      <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()"(keyup.enter)="pesquisar()"/>
+      <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
+      @if (aberta) 
+      {
+        <div class="painel-pesquisa">
+        @if (!pesquisa.trim()) 
+        {
+          <h3>Mais buscados</h3>
+          <button class="termo" (click)="selecionar('iPhone')"><span>1</span>iPhones</button>
+          <button class="termo" (click)="selecionar('Samsung Galaxy')"><span>2</span>Samsung Galaxy</button>
+          <button class="termo" (click)="selecionar('PlayStation')"><span>3</span>PlayStation</button>
+          <button class="termo" (click)="selecionar('Notebook')"><span>4</span>Notebooks</button>
+          <button class="termo" (click)="selecionar('SSD')"><span>5</span>SSD</button>
+        } 
+        @else 
+        {
+          <div class="sugestoes">
+            <div class="lista-sugestoes">
+              <h3>Sugestões</h3>
+              @for (produto of resultados; track produto.id) 
+              {
+                <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
               }
             </div>
-          }
-        </div>
-
-        <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar" /><span>Entrar</span></button>
-        <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho" /> <span>Carrinho</span></button>
-      </header>
-    }
-    @if (!router.url.startsWith('/esqueceu')) {
-      <nav>
-        <div class="item-menu">
-          <button class="categoria" title="Móveis" (click)="selecionar('Móveis')">
-            Dispositivos Móveis
-          </button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('Celulares')">Celulares</button>
-            <button (click)="selecionar('Tablets')">Tablets</button>
-            <button (click)="selecionar('Notebooks')">Notebooks</button>
-            <button (click)="selecionar('Smartwatches')">Smartwatches</button>
+            <div class="produtos-sugeridos">
+              <h3>Produtos sugeridos</h3>
+              <div class="lista-sugeridos">
+                @for (produto of resultados; track produto.id) 
+                {
+                  <div class="produto-sugerido" (click)="abrir(produto.id)">
+                    <img [src]="produto.imagem" [alt]="produto.nome" />
+                    <p>{{ produto.nome }}</p>
+                    <strong>{{ produto.novo }}</strong>
+                  </div>
+                }
+              </div>
+            </div>
           </div>
+        }
         </div>
-
-        <div class="item-menu">
-          <button class="categoria" title="Computadores" (click)="selecionar('Computadores')">
-            Computadores
-          </button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('Processadores')">Processadores</button>
-            <button (click)="selecionar('Placas-mãe')">Placas-mãe</button>
-            <button (click)="selecionar('Memórias RAM')">Memórias RAM</button>
-            <button (click)="selecionar('Placas de vídeo')">Placas de vídeo</button>
-            <button (click)="selecionar('SSD e HD')">SSD e HD</button>
-            <button (click)="selecionar('Fontes')">Fontes</button>
-            <button (click)="selecionar('Gabinetes')">Gabinetes</button>
-            <button (click)="selecionar('Refrigeração')">Refrigeração</button>
-            <button (click)="selecionar('Placas de expansão')">Placas de expansão</button>
-            <button (click)="selecionar('Monitores')">Monitores</button>
-          </div>
-        </div>
-
-        <div class="item-menu">
-          <button class="categoria" title="Games" (click)="selecionar('Games')">Games</button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('PlayStation')">PlayStation</button>
-            <button (click)="selecionar('Nintendo')">Nintendo</button>
-            <button (click)="selecionar('Xbox')">Xbox</button>
-            <button (click)="selecionar('Jogos')">Jogos</button>
-          </div>
-        </div>
-
-        <div class="item-menu">
-          <button class="categoria" title="TV e Áudio" (click)="selecionar('TV e Áudio')">TV e Áudio</button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('Smart TVs')">Smart TVs</button>
-            <button (click)="selecionar('Projetores')">Projetores</button>
-            <button (click)="selecionar('Soundbars')">Soundbars</button>
-            <button (click)="selecionar('Home Theaters')">Home Theaters</button>
-            <button (click)="selecionar('Caixas de Som')">Caixas de Som</button>
-            <button (click)="selecionar('Fones de Ouvido')">Fones de Ouvido</button>
-            <button (click)="selecionar('Headsets')">Headsets</button>
-            <button (click)="selecionar('Microfones')">Microfones</button>
-            <button (click)="selecionar('Amplificadores')">Amplificadores</button>
-            <button (click)="selecionar('Receivers')">Receivers</button>
-            <button (click)="selecionar('Subwoofers')">Subwoofers</button>
-          </div>
-        </div>
-
-        <div class="item-menu">
-          <button class="categoria" title="Casa" (click)="selecionar('Casa')">Casa</button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('Assistentes Virtuais')">Assistentes Virtuais</button>
-            <button (click)="selecionar('Lâmpadas Inteligentes')">Lâmpadas Inteligentes</button>
-            <button (click)="selecionar('Segurança')">Segurança</button>
-            <button (click)="selecionar('Robôs Aspiradores')">Robôs Aspiradores</button>
-            <button (click)="selecionar('Climatização')">Climatização</button>
-            <button (click)="selecionar('Aspiradores')">Aspiradores</button>
-            <button (click)="selecionar('Tomadas e Energia')">Tomadas e Energia</button>
-          </div>
-        </div>
-
-        <div class="item-menu">
-          <button class="categoria" title="Acessórios" (click)="selecionar('Acessórios')">Acessórios</button>
-
-          <div class="sub-menu">
-            <button (click)="selecionar('Cabos')">Cabos</button>
-            <button (click)="selecionar('Carregadores')">Carregadores</button>
-            <button (click)="selecionar('Adaptadores')">Adaptadores</button>
-            <button (click)="selecionar('Hubs USB')">Hubs USB</button>
-            <button (click)="selecionar('Suportes')">Suportes</button>
-            <button (click)="selecionar('Capas e Películas')">Capas e Películas</button>
-            <button (click)="selecionar('Power Banks')">Power Banks</button>
-            <button (click)="selecionar('Armazenamento Portátil')">Armazenamento Portátil</button>
-            <button (click)="selecionar('Leitores de Cartão')">Leitores de Cartão</button>
-            <button (click)="selecionar('Dock Stations')">Dock Stations</button>
-          </div>
-        </div>
-      </nav>
-    }
-    <router-outlet/>
-    @if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login')) {
-      <div class="music-player">
-        <button class="music-button" (click)="toggleMudo()"  [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
+      }
+    </div>
+    <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar" /><span>Entrar</span></button>
+    <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho" /> <span>Carrinho</span></button>
+  </header>
+}
+@if (!router.url.startsWith('/esqueceu')) 
+{
+  <nav>
+    <div class="item-menu">
+      <button class="categoria" title="Móveis" (click)="selecionarCategoria('Móveis')">Dispositivos Móveis</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('Celulares')">Celulares</button>
+        <button (click)="selecionarTipo('Tablets')">Tablets</button>
+        <button (click)="selecionarTipo('Notebooks')">Notebooks</button>
+        <button (click)="selecionarTipo('Smartwatches')">Smartwatches</button>
       </div>
-    }
-  </body>
-</html>
+    </div>
+    <div class="item-menu">
+    <button class="categoria" title="Computadores" (click)="selecionarCategoria('Computadores')">Computadores</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('Processadores')">Processadores</button>
+        <button (click)="selecionarTipo('Placas-mãe')">Placas-mãe</button>
+        <button (click)="selecionarTipo('Memórias RAM')">Memórias RAM</button>
+        <button (click)="selecionarTipo('Placas de vídeo')">Placas de vídeo</button>
+        <button (click)="selecionarTipo('SSD e HD')">SSD e HD</button>
+        <button (click)="selecionarTipo('Fontes')">Fontes</button>
+        <button (click)="selecionarTipo('Gabinetes')">Gabinetes</button>
+        <button (click)="selecionarTipo('Refrigeração')">Refrigeração</button>
+        <button (click)="selecionarTipo('Placas de expansão')">Placas de expansão</button>
+        <button (click)="selecionarTipo('Monitores')">Monitores</button>
+      </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Games" (click)="selecionarCategoria('Games')">Games</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('PlayStation')">PlayStation</button>
+        <button (click)="selecionarTipo('Nintendo')">Nintendo</button>
+        <button (click)="selecionarTipo('Xbox')">Xbox</button>
+        <button (click)="selecionarTipo('Jogos')">Jogos</button>
+      </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="TV e Áudio" (click)="selecionarCategoria('TV e Áudio')">TV e Áudio</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('Smart TVs')">Smart TVs</button>
+        <button (click)="selecionarTipo('Projetores')">Projetores</button>
+        <button (click)="selecionarTipo('Soundbars')">Soundbars</button>
+        <button (click)="selecionarTipo('Home Theaters')">Home Theaters</button>
+        <button (click)="selecionarTipo('Caixas de Som')">Caixas de Som</button>
+        <button (click)="selecionarTipo('Fones de Ouvido')">Fones de Ouvido</button>
+        <button (click)="selecionarTipo('Headsets')">Headsets</button>
+        <button (click)="selecionarTipo('Microfones')">Microfones</button>
+        <button (click)="selecionarTipo('Amplificadores')">Amplificadores</button>
+        <button (click)="selecionarTipo('Receivers')">Receivers</button>
+        <button (click)="selecionarTipo('Subwoofers')">Subwoofers</button>
+      </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Casa" (click)="selecionarCategoria('Casa')">Casa</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('Assistentes Virtuais')">Assistentes Virtuais</button>
+        <button (click)="selecionarTipo('Lâmpadas Inteligentes')">Lâmpadas Inteligentes</button>
+        <button (click)="selecionarTipo('Segurança')">Segurança</button>
+        <button (click)="selecionarTipo('Robôs Aspiradores')">Robôs Aspiradores</button>
+        <button (click)="selecionarTipo('Climatização')">Climatização</button>
+        <button (click)="selecionarTipo('Aspiradores')">Aspiradores</button>
+        <button (click)="selecionarTipo('Tomadas e Energia')">Tomadas e Energia</button>
+      </div>
+    </div>
+    <div class="item-menu">
+      <button class="categoria" title="Acessórios" (click)="selecionarCategoria('Acessórios')">Acessórios</button>
+      <div class="sub-menu">
+        <button (click)="selecionarTipo('Cabos')">Cabos</button>
+        <button (click)="selecionarTipo('Carregadores')">Carregadores</button>
+        <button (click)="selecionarTipo('Adaptadores')">Adaptadores</button>
+        <button (click)="selecionarTipo('Hubs USB')">Hubs USB</button>
+        <button (click)="selecionarTipo('Suportes')">Suportes</button>
+        <button (click)="selecionarTipo('Capas e Películas')">Capas e Películas</button>
+        <button (click)="selecionarTipo('Power Banks')">Power Banks</button>
+        <button (click)="selecionarTipo('Armazenamento Portátil')">Armazenamento Portátil</button>
+        <button (click)="selecionarTipo('Leitores de Cartão')">Leitores de Cartão</button>
+        <button (click)="selecionarTipo('Dock Stations')">Dock Stations</button>
+      </div>
+    </div>
+  </nav>
+}
+<router-outlet/>
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login')) 
+{
+  <div class="music-player">
+    <button class="music-button" (click)="toggleMudo()" [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
+  </div>
+}

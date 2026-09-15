@@ -1,8 +1,3 @@
-body 
-{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 :host
 {
     display: block;
@@ -20,6 +15,7 @@ body
     margin: 40px auto;
     padding: 40px;
     background-color: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(6px);
     border: 1px solid #ddd;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
@@ -70,16 +66,15 @@ body
 
 .erro
 {
-    margin: 8px 0 0 0;
+    margin: 8px 0 0;
     color: #dc2626;
     font-size: 14px;
     font-weight: bold;
 }
 
-.enviar
+.enviar, .confirmar
 {
     width: 100%;
-    margin-top: 20px;
     padding: 13px;
     border: none;
     border-radius: 6px;
@@ -91,7 +86,17 @@ body
     transition: 0.2s;
 }
 
-.enviar:hover
+.enviar
+{
+    margin-top: 20px;
+}
+
+.confirmar
+{
+    margin-top: 15px;
+}
+
+.enviar:hover, .confirmar:hover
 {
     background-color: #2563EB;
 }
@@ -112,36 +117,14 @@ body
     text-decoration: underline;
 }
 
-.confirmar
-{
-    width: 100%;
-    margin-top: 15px;
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1E3A8A;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.confirmar:hover
-{
-    background-color: #2563EB;
-}
-
 .fpopup
 {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     background-color: rgba(0, 0, 0, 0.45);
     z-index: 1000;
 }
@@ -166,8 +149,8 @@ body
 
 .popup p
 {
-    color: #6B7280;
     margin-bottom: 15px;
+    color: #6B7280;
 }
 
 .popup strong
@@ -177,6 +160,7 @@ body
     color: #1E3A8A;
     font-size: 32px;
     letter-spacing: 7px;
+    overflow-wrap: anywhere;
 }
 
 .popup button
@@ -196,4 +180,39 @@ body
 .popup button:hover
 {
     background-color: #2563EB;
+}
+
+@media (max-width: 550px)
+{
+    :host
+    {
+        padding: 25px 12px;
+    }
+
+    .esqueceu
+    {
+        margin: 20px auto;
+        padding: 30px 20px;
+    }
+
+    .esqueceu h1
+    {
+        font-size: 24px;
+    }
+
+    .esqueceu h2
+    {
+        font-size: 18px;
+    }
+
+    .popup
+    {
+        padding: 30px 20px;
+    }
+
+    .popup strong
+    {
+        font-size: 27px;
+        letter-spacing: 5px;
+    }
 }

@@ -97,6 +97,18 @@ export class App implements OnInit
             this.aberta = false;
         }, 150);
     }
+    selecionarTipo(tipo: string)
+    {
+        this.pesquisa = tipo;
+        this.aberta = false;
+        this.router.navigate(['/busca'], { queryParams: { tipo: tipo } });
+    }
+    selecionarCategoria(categoria: string)
+    {
+        this.pesquisa = categoria;
+        this.aberta = false;
+        this.router.navigate(['/busca'], { queryParams: { categoria: categoria } });
+    }
     get resultados()
     {
         const termo = this.pesquisa.trim().toLowerCase();
