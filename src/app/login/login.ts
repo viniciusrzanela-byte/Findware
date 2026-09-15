@@ -1,28 +1,34 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
-@Component
-({
+@Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
-
-export class Login 
-{
+export class Login {
   mostrar = false;
   email = '';
   senha = '';
   tentativa = false;
 
-  vEmail(valor : string): boolean
-  {
+  constructor(private router: Router) {}
+
+  vEmail(valor: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
   }
-  get emailV()
-  {
+
+  get emailV() {
     return this.vEmail(this.email);
+  }
+
+  entrar() {
+    this.tentativa = true;
+
+    if (this.emailV && this.senha.trim()) {
+      this.router.navigate(['/']);
+    }
   }
 }

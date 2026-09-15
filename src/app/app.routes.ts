@@ -7,34 +7,33 @@ import { Esqueceu } from './esqueceu/esqueceu';
 import { Carrinho } from './carrinho/carrinho';
 import { Busca } from './busca/busca';
 
-export const routes: Routes =
-[
-    {
-        path: '',
-        component: Vitrine
-    },
-    {
-        path: 'detalhe/:id',
-        component: Detalhe
-    },
-    {
-        path: 'login',
-        component: Login
-    },
-    {
-        path: 'cadastrar',
-        component: Cadastrar
-    },
-    {
-        path: 'esqueceu',
-        component: Esqueceu
-    },
-    {
-      path: 'carrinho',
-      component: Carrinho
-    },
-    {
-        path: 'busca',
-        component: Busca
-    }
+export const routes: Routes = [
+  {
+    path: '',
+    component: Vitrine,
+  },
+  {
+    path: 'detalhe/:id',
+    component: Detalhe,
+  },
+  {
+    path: 'login',
+    component: Login,
+  },
+  {
+    path: 'cadastrar',
+    component: Cadastrar,
+  },
+  {
+    path: 'esqueceu',
+    component: Esqueceu,
+  },
+  {
+    path: 'carrinho',
+    component: Carrinho,
+  },
+  {
+    path: 'busca',
+    component: Busca,
+  },
 ];

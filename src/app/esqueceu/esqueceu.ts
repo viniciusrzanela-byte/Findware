@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './esqueceu.html',
   styleUrl: './esqueceu.css',
 })
-export class Esqueceu 
-{
+export class Esqueceu {
   email = '';
   tentativa = false;
   codigo = '';
@@ -17,16 +16,13 @@ export class Esqueceu
   cEnviado = false;
   cErrado = false;
   popup = false;
-  constructor(private router: Router){}
-  vEmail(valor: string): boolean
-  {
+  constructor(private router: Router) {}
+  vEmail(valor: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());
   }
-  enviarC()
-  {
+  enviarC() {
     this.tentativa = true;
-    if (!this.emailV)
-    {
+    if (!this.emailV) {
       return;
     }
     this.cGerado = Math.floor(100000 + Math.random() * 900000).toString();
@@ -34,32 +30,24 @@ export class Esqueceu
     this.cErrado = false;
     this.popup = true;
   }
-  confirmarC()
-  {
-    if(!this.cEnviado)
-    {
+  confirmarC() {
+    if (!this.cEnviado) {
       return;
     }
-    if (!this.codigoV)
-    {
+    if (!this.codigoV) {
       this.cErrado = true;
       return;
     }
-    if(this.codigo === this.cGerado)
-    {
+    if (this.codigo === this.cGerado) {
       this.router.navigate(['/']);
-    }
-    else
-    {
+    } else {
       this.cErrado = true;
     }
   }
-  get emailV()
-  {
+  get emailV() {
     return this.vEmail(this.email);
   }
-  get codigoV()
-  {
+  get codigoV() {
     return /^\d{6}$/.test(this.codigo);
-  } 
+  }
 }

@@ -1,184 +1,161 @@
-.ofertas
-{
+.ofertas {
+  width: 100%;
+  padding: 35px 40px;
+  text-align: center;
+}
+
+.ofertas h2 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #60a5fa;
+  font-size: 36px;
+}
+
+.lista-ofertas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px;
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.produto {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 450px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.produto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+.produto img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+}
+
+.produto h3 {
+  min-height: 45px;
+  margin: 15px 0 10px;
+  color: #111827;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.produto .original {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.produto .novo {
+  margin: 5px 0 20px;
+  font-size: 22px;
+}
+
+.desconto {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background-color: #dc2626;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.ver-produto {
+  width: 100%;
+  margin-top: auto;
+  padding: 11px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e3a8a;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ver-produto:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.ver-mais {
+  display: block;
+  margin: 35px auto 10px;
+  padding: 12px 30px;
+  background-color: white;
+  color: #1e3a8a;
+  border: 2px solid #1e3a8a;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.ver-mais:hover {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+@media (max-width: 850px) {
+  .ofertas {
+    padding: 30px 20px;
+  }
+
+  .ofertas h2 {
+    font-size: 32px;
+  }
+
+  .lista-ofertas {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 520px) {
+  .ofertas {
+    padding: 25px 15px;
+  }
+
+  .ofertas h2 {
+    font-size: 28px;
+  }
+
+  .lista-ofertas {
+    grid-template-columns: 1fr;
+    max-width: 340px;
+  }
+
+  .produto {
+    min-height: 420px;
+  }
+
+  .produto img {
+    height: 210px;
+  }
+
+  .ver-mais {
     width: 100%;
-    padding: 35px 40px;
-    text-align: center;
-}
-
-.ofertas h2
-{
-    margin-top: 0;
-    margin-bottom: 30px;
-    color: #60A5FA;
-    font-size: 36px;
-}
-
-.lista-ofertas
-{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
-    justify-content: center;
-    align-items: stretch;
-    gap: 25px;
-    max-width: 1250px;
-    margin: 0 auto;
-}
-
-.produto
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-height: 450px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.produto:hover
-{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-}
-
-.produto img
-{
-    width: 100%;
-    height: 230px;
-    object-fit: contain;
-}
-
-.produto h3
-{
-    min-height: 45px;
-    margin: 15px 0 10px;
-    color: #111827;
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.produto .original
-{
-    margin: 5px 0;
-    font-size: 15px;
-}
-
-.produto .novo
-{
-    margin: 5px 0 20px;
-    font-size: 22px;
-}
-
-.desconto
-{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 8px;
-    border-radius: 5px;
-    background-color: #dc2626;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    z-index: 1;
-}
-
-.ver-produto
-{
-    width: 100%;
-    margin-top: auto;
-    padding: 11px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1E3A8A;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.ver-produto:hover
-{
-    background-color: #2563EB;
-    transform: translateY(-2px);
-}
-
-.ver-mais
-{
-    display: block;
-    margin: 35px auto 10px;
-    padding: 12px 30px;
-    background-color: white;
-    color: #1E3A8A;
-    border: 2px solid #1E3A8A;
-    border-radius: 25px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.ver-mais:hover
-{
-    background-color: #1E3A8A;
-    color: white;
-}
-
-@media (max-width: 850px)
-{
-    .ofertas
-    {
-        padding: 30px 20px;
-    }
-
-    .ofertas h2
-    {
-        font-size: 32px;
-    }
-
-    .lista-ofertas
-    {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-        max-width: 600px;
-    }
-}
-
-@media (max-width: 520px)
-{
-    .ofertas
-    {
-        padding: 25px 15px;
-    }
-
-    .ofertas h2
-    {
-        font-size: 28px;
-    }
-
-    .lista-ofertas
-    {
-        grid-template-columns: 1fr;
-        max-width: 340px;
-    }
-
-    .produto
-    {
-        min-height: 420px;
-    }
-
-    .produto img
-    {
-        height: 210px;
-    }
-
-    .ver-mais
-    {
-        width: 100%;
-        max-width: 340px;
-    }
+    max-width: 340px;
+  }
 }

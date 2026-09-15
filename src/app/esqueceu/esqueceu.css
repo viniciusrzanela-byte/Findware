@@ -1,218 +1,192 @@
-:host
-{
-    display: block;
-    min-height: calc(100vh - 40px);
-    padding: 50px 20px;
-    background-color: transparent;
+:host {
+  display: block;
+  min-height: calc(100vh - 40px);
+  padding: 50px 20px;
+  background-color: transparent;
 }
 
-.esqueceu
-{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 520px;
-    margin: 40px auto;
-    padding: 40px;
-    background-color: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(6px);
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+.esqueceu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 520px;
+  margin: 40px auto;
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.esqueceu h1
-{
-    margin-top: 0;
-    margin-bottom: 25px;
-    color: #111827;
-    font-size: 28px;
-    text-align: center;
+.esqueceu h1 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #111827;
+  font-size: 28px;
+  text-align: center;
 }
 
-.esqueceu h2
-{
-    margin-top: 35px;
-    margin-bottom: 18px;
-    color: #111827;
-    font-size: 19px;
-    text-align: center;
+.esqueceu h2 {
+  margin-top: 35px;
+  margin-bottom: 18px;
+  color: #111827;
+  font-size: 19px;
+  text-align: center;
 }
 
-.esqueceu input
-{
-    width: 100%;
-    padding: 13px 15px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    outline: none;
-    font-size: 16px;
-    transition: 0.2s;
+.esqueceu input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  font-size: 16px;
+  transition: 0.2s;
 }
 
-.esqueceu input:focus
-{
-    border-color: #2563EB;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+.esqueceu input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
 }
 
-.codigo
-{
-    text-align: center;
-    font-size: 22px !important;
-    font-weight: bold;
-    letter-spacing: 8px;
+.codigo {
+  text-align: center;
+  font-size: 22px !important;
+  font-weight: bold;
+  letter-spacing: 8px;
 }
 
-.erro
-{
-    margin: 8px 0 0;
-    color: #dc2626;
-    font-size: 14px;
-    font-weight: bold;
+.erro {
+  margin: 8px 0 0;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: bold;
 }
 
-.enviar, .confirmar
-{
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1E3A8A;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
+.enviar,
+.confirmar {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e3a8a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.enviar
-{
-    margin-top: 20px;
+.enviar {
+  margin-top: 20px;
 }
 
-.confirmar
-{
-    margin-top: 15px;
+.confirmar {
+  margin-top: 15px;
 }
 
-.enviar:hover, .confirmar:hover
-{
-    background-color: #2563EB;
+.enviar:hover,
+.confirmar:hover {
+  background-color: #2563eb;
 }
 
-.reenviar
-{
-    margin-top: 18px;
-    border: none;
-    background-color: transparent;
-    color: #6B7280;
-    font-size: 14px;
-    cursor: pointer;
+.reenviar {
+  margin-top: 18px;
+  border: none;
+  background-color: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  cursor: pointer;
 }
 
-.reenviar:hover
-{
-    color: #1E3A8A;
-    text-decoration: underline;
+.reenviar:hover {
+  color: #1e3a8a;
+  text-decoration: underline;
 }
 
-.fpopup
-{
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.45);
-    z-index: 1000;
+.fpopup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
 }
 
-.popup
-{
-    width: 100%;
-    max-width: 380px;
-    padding: 35px;
-    background-color: white;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+.popup {
+  width: 100%;
+  max-width: 380px;
+  padding: 35px;
+  background-color: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
-.popup h2
-{
-    margin-top: 0;
-    color: #111827;
-    font-size: 25px;
+.popup h2 {
+  margin-top: 0;
+  color: #111827;
+  font-size: 25px;
 }
 
-.popup p
-{
-    margin-bottom: 15px;
-    color: #6B7280;
+.popup p {
+  margin-bottom: 15px;
+  color: #6b7280;
 }
 
-.popup strong
-{
-    display: block;
-    margin: 20px 0;
-    color: #1E3A8A;
-    font-size: 32px;
-    letter-spacing: 7px;
-    overflow-wrap: anywhere;
+.popup strong {
+  display: block;
+  margin: 20px 0;
+  color: #1e3a8a;
+  font-size: 32px;
+  letter-spacing: 7px;
+  overflow-wrap: anywhere;
 }
 
-.popup button
-{
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #1E3A8A;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
+.popup button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e3a8a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.popup button:hover
-{
-    background-color: #2563EB;
+.popup button:hover {
+  background-color: #2563eb;
 }
 
-@media (max-width: 550px)
-{
-    :host
-    {
-        padding: 25px 12px;
-    }
+@media (max-width: 550px) {
+  :host {
+    padding: 25px 12px;
+  }
 
-    .esqueceu
-    {
-        margin: 20px auto;
-        padding: 30px 20px;
-    }
+  .esqueceu {
+    margin: 20px auto;
+    padding: 30px 20px;
+  }
 
-    .esqueceu h1
-    {
-        font-size: 24px;
-    }
+  .esqueceu h1 {
+    font-size: 24px;
+  }
 
-    .esqueceu h2
-    {
-        font-size: 18px;
-    }
+  .esqueceu h2 {
+    font-size: 18px;
+  }
 
-    .popup
-    {
-        padding: 30px 20px;
-    }
+  .popup {
+    padding: 30px 20px;
+  }
 
-    .popup strong
-    {
-        font-size: 27px;
-        letter-spacing: 5px;
-    }
+  .popup strong {
+    font-size: 27px;
+    letter-spacing: 5px;
+  }
 }

@@ -1,96 +1,113 @@
 <section class="cadastrar">
-    <h1>Interessado em eletrônicos de alta qualidade? Junte-se a nós!</h1>
-    <div class="informacoes">
-        <div class="nomeação">
-            <input type="text" placeholder="Nome" [(ngModel)]="nome">
-            @if (tentativa && !nome.trim())
-            {
-                <p class="erro">O nome é obrigatório!</p>
-            }
-            @else if (tentativa && !nomeV)
-            {
-                <p class="erro">Seu nome só pode ser composto por letras!</p>
-            }
-            <input type="text" placeholder="Nome do Meio" [(ngModel)]="nomeMeio">
-            @if (tentativa && !nomeMeioV)
-            {
-                <p class="erro">Seu Nome do Meio só pode ser composto por letras!</p>
-            }
-            <input type="text" placeholder="Sobrenome" [(ngModel)]="sobrenome">
-            @if (tentativa && !sobrenome.trim())
-            {
-                <p class="erro">O sobrenome é obrigatório!</p>
-            }
-            @else if (tentativa && !sobrenomeV)
-            {
-                <p class="erro">Seu sobrenome só pode ser composto por letras!</p>
-            }
-        </div>
-        <div class ="documento">
-            <input type="text" maxlength="14" placeholder="CPF" [(ngModel)]="cpf">
-            @if (tentativa && !cpf.trim())
-            {
-                <p class="erro">O CPF é obrigatório!</p>
-            }
-            @else if (tentativa && !valido)
-            {
-                <p class="erro">CPF inválido</p>
-            }
-        </div>
-        <div class="telefone">
-            <button type="button" class="DDI" title="País" (click)="exibir = !exibir">{{ DDIe }}</button>
-            @if (exibir)
-            {
-                <div class="DDIs">
-                    <button type="button" (click)="DDIe='🇧🇷 +55'; exibir = false;">🇧🇷 Brasil +55</button>
-                    <button type="button" (click)="DDIe='🇺🇸 +1'; exibir = false;">🇺🇸 Estados Unidos +1</button>
-                    <button type="button" (click)="DDIe='🇨🇦 +1'; exibir = false;">🇨🇦 Canadá +1</button>
-                    <button type="button" (click)="DDIe='🇲🇽 +52'; exibir = false;">🇲🇽 México +52</button>
-                    <button type="button" (click)="DDIe='🇦🇷 +54'; exibir = false;">🇦🇷 Argentina +54</button>
-                    <button type="button" (click)="DDIe='🇨🇱 +56'; exibir = false;">🇨🇱 Chile +56</button>
-                    <button type="button" (click)="DDIe='🇵🇾 +595'; exibir = false;">🇵🇾 Paraguai +595</button>
-                    <button type="button" (click)="DDIe='🇺🇾 +598'; exibir = false;">🇺🇾 Uruguai +598</button>
-                </div>
-            }
-            <input type="tel" maxlength="15" [(ngModel)]="telefone" inputmode="numeric" placeholder="(DDD) Telefone">
-            @if (tentativa && !telefoneV)
-            {
-                <p class="erro">O telefone deve ter de 8 a 15 dígitos!</p>
-            }
-        </div>
-        <div class="email">
-            <input type="email" placeholder="Email" [(ngModel)]="email">
-            @if (tentativa && !email.trim())
-            {
-                <p class="erro">O email é obrigatório!</p>
-            }
-            @else if (tentativa && !emailV)
-            {
-                <p class="erro">O endereço de email é inválido!</p>
-            } 
-        </div>
-        <div class ="senha">
-            <input [type]="mostrar ? 'text' : 'password'" maxlength="20" placeholder="Senha" [(ngModel)]="senha">
-            <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
-            <input [type]="esconder ? 'text' : 'password'" maxlength="20" placeholder="Confirme sua senha" [(ngModel)]="confirmar">
-            <button class="ocultar" type="button" (click)="esconder = !esconder">👁</button>
-            @if (tentativa && !senha.trim())
-            {
-                <p class="erro">A senha é obrigatória!</p>
-            }
-            @else if (tentativa && senha && !senhaV)
-            {
-                <p class="erro">A senha deve ter pelo menos 8 caracteres, com um máximo de 20 caracteres, uma letra maiúscula, uma minúscula, um número e um caractere especial!</p>
-            }
-            @else if (tentativa && senha.trim() && !confirmar.trim())
-            {
-                <p class="erro">Confirme sua senha!</p>
-            }
-            @else if (tentativa && senha && confirmar && !iguais)
-            {
-                <p class="erro">As senhas devem ser iguais!</p>
-            }
-        </div>
-        <button (click)="tentativa = true" [routerLink]="nomeV && nomeMeioV && sobrenomeV && valido && telefoneV && emailV && senhaV && confirmar.trim() && iguais ? ['/'] : null" class="entrar">Cadastrar</button>
+  <h1>Interessado em eletrônicos de alta qualidade? Junte-se a nós!</h1>
+  <div class="informacoes">
+    <div class="nomeação">
+      <input type="text" placeholder="Nome" [(ngModel)]="nome" />
+      @if (tentativa && !nome.trim()) {
+        <p class="erro">O nome é obrigatório!</p>
+      } @else if (tentativa && !nomeV) {
+        <p class="erro">Seu nome só pode ser composto por letras!</p>
+      }
+      <input type="text" placeholder="Nome do Meio" [(ngModel)]="nomeMeio" />
+      @if (tentativa && !nomeMeioV) {
+        <p class="erro">Seu Nome do Meio só pode ser composto por letras!</p>
+      }
+      <input type="text" placeholder="Sobrenome" [(ngModel)]="sobrenome" />
+      @if (tentativa && !sobrenome.trim()) {
+        <p class="erro">O sobrenome é obrigatório!</p>
+      } @else if (tentativa && !sobrenomeV) {
+        <p class="erro">Seu sobrenome só pode ser composto por letras!</p>
+      }
     </div>
+    <div class="documento">
+      <input type="text" maxlength="14" placeholder="CPF" [(ngModel)]="cpf" />
+      @if (tentativa && !cpf.trim()) {
+        <p class="erro">O CPF é obrigatório!</p>
+      } @else if (tentativa && !valido) {
+        <p class="erro">CPF inválido</p>
+      }
+    </div>
+    <div class="telefone">
+      <button type="button" class="DDI" title="País" (click)="exibir = !exibir">{{ DDIe }}</button>
+      @if (exibir) {
+        <div class="DDIs">
+          <button type="button" (click)="DDIe = '🇧🇷 +55'; exibir = false">🇧🇷 Brasil +55</button>
+          <button type="button" (click)="DDIe = '🇺🇸 +1'; exibir = false">
+            🇺🇸 Estados Unidos +1
+          </button>
+          <button type="button" (click)="DDIe = '🇨🇦 +1'; exibir = false">🇨🇦 Canadá +1</button>
+          <button type="button" (click)="DDIe = '🇲🇽 +52'; exibir = false">🇲🇽 México +52</button>
+          <button type="button" (click)="DDIe = '🇦🇷 +54'; exibir = false">🇦🇷 Argentina +54</button>
+          <button type="button" (click)="DDIe = '🇨🇱 +56'; exibir = false">🇨🇱 Chile +56</button>
+          <button type="button" (click)="DDIe = '🇵🇾 +595'; exibir = false">🇵🇾 Paraguai +595</button>
+          <button type="button" (click)="DDIe = '🇺🇾 +598'; exibir = false">🇺🇾 Uruguai +598</button>
+        </div>
+      }
+      <input
+        type="tel"
+        maxlength="15"
+        [(ngModel)]="telefone"
+        inputmode="numeric"
+        placeholder="(DDD) Telefone"
+      />
+      @if (tentativa && !telefoneV) {
+        <p class="erro">O telefone deve ter de 8 a 15 dígitos!</p>
+      }
+    </div>
+    <div class="email">
+      <input type="email" placeholder="Email" [(ngModel)]="email" />
+      @if (tentativa && !email.trim()) {
+        <p class="erro">O email é obrigatório!</p>
+      } @else if (tentativa && !emailV) {
+        <p class="erro">O endereço de email é inválido!</p>
+      }
+    </div>
+    <div class="senha">
+      <input
+        [type]="mostrar ? 'text' : 'password'"
+        maxlength="20"
+        placeholder="Senha"
+        [(ngModel)]="senha"
+      />
+      <button class="ocultar" type="button" (click)="mostrar = !mostrar">👁</button>
+      <input
+        [type]="esconder ? 'text' : 'password'"
+        maxlength="20"
+        placeholder="Confirme sua senha"
+        [(ngModel)]="confirmar"
+      />
+      <button class="ocultar" type="button" (click)="esconder = !esconder">👁</button>
+      @if (tentativa && !senha.trim()) {
+        <p class="erro">A senha é obrigatória!</p>
+      } @else if (tentativa && senha && !senhaV) {
+        <p class="erro">
+          A senha deve ter pelo menos 8 caracteres, com um máximo de 20 caracteres, uma letra
+          maiúscula, uma minúscula, um número e um caractere especial!
+        </p>
+      } @else if (tentativa && senha.trim() && !confirmar.trim()) {
+        <p class="erro">Confirme sua senha!</p>
+      } @else if (tentativa && senha && confirmar && !iguais) {
+        <p class="erro">As senhas devem ser iguais!</p>
+      }
+    </div>
+    <button
+      (click)="tentativa = true"
+      [routerLink]="
+        nomeV &&
+        nomeMeioV &&
+        sobrenomeV &&
+        valido &&
+        telefoneV &&
+        emailV &&
+        senhaV &&
+        confirmar.trim() &&
+        iguais
+          ? ['/']
+          : null
+      "
+      class="entrar"
+    >
+      Cadastrar
+    </button>
+  </div>
 </section>

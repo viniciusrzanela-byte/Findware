@@ -1,5 +1,4 @@
-@if (saudacoes)
-{
+@if (saudacoes) {
   <div class="fsalve">
     <div class="salve">
       <img src="Findware.png" alt="Findware" />
@@ -10,62 +9,74 @@
   </div>
 }
 
-@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu')) 
-{
+@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu')) {
   <header>
-    <a class="logo" [routerLink]="['/']"><img src="Findware.png" alt="Findware"/><span>Findware</span></a>
+    <a class="logo" [routerLink]="['/']"
+      ><img src="Findware.png" alt="Findware" /><span>Findware</span></a
+    >
     <div class="area-pesquisa">
-      <input type="text" class="pesquisa" placeholder="Pesquisar..." [(ngModel)]="pesquisa" (focus)="aberta = true" (blur)="fechar()"(keyup.enter)="pesquisar()"/>
+      <input
+        type="text"
+        class="pesquisa"
+        placeholder="Pesquisar..."
+        [(ngModel)]="pesquisa"
+        (focus)="aberta = true"
+        (blur)="fechar()"
+        (keyup.enter)="pesquisar()"
+      />
       <button class="OK" title="Pesquisar" (click)="pesquisar()">🔍</button>
-      @if (aberta) 
-      {
+      @if (aberta) {
         <div class="painel-pesquisa">
-        @if (!pesquisa.trim()) 
-        {
-          <h3>Mais buscados</h3>
-          <button class="termo" (click)="selecionar('iPhone')"><span>1</span>iPhones</button>
-          <button class="termo" (click)="selecionar('Samsung Galaxy')"><span>2</span>Samsung Galaxy</button>
-          <button class="termo" (click)="selecionar('PlayStation')"><span>3</span>PlayStation</button>
-          <button class="termo" (click)="selecionar('Notebook')"><span>4</span>Notebooks</button>
-          <button class="termo" (click)="selecionar('SSD')"><span>5</span>SSD</button>
-        } 
-        @else 
-        {
-          <div class="sugestoes">
-            <div class="lista-sugestoes">
-              <h3>Sugestões</h3>
-              @for (produto of resultados; track produto.id) 
-              {
-                <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
-              }
-            </div>
-            <div class="produtos-sugeridos">
-              <h3>Produtos sugeridos</h3>
-              <div class="lista-sugeridos">
-                @for (produto of resultados; track produto.id) 
-                {
-                  <div class="produto-sugerido" (click)="abrir(produto.id)">
-                    <img [src]="produto.imagem" [alt]="produto.nome" />
-                    <p>{{ produto.nome }}</p>
-                    <strong>{{ produto.novo }}</strong>
-                  </div>
+          @if (!pesquisa.trim()) {
+            <h3>Mais buscados</h3>
+            <button class="termo" (click)="selecionar('iPhone')"><span>1</span>iPhones</button>
+            <button class="termo" (click)="selecionar('Samsung Galaxy')">
+              <span>2</span>Samsung Galaxy
+            </button>
+            <button class="termo" (click)="selecionar('PlayStation')">
+              <span>3</span>PlayStation
+            </button>
+            <button class="termo" (click)="selecionar('Notebook')"><span>4</span>Notebooks</button>
+            <button class="termo" (click)="selecionar('SSD')"><span>5</span>SSD</button>
+          } @else {
+            <div class="sugestoes">
+              <div class="lista-sugestoes">
+                <h3>Sugestões</h3>
+                @for (produto of resultados; track produto.id) {
+                  <button (click)="selecionar(produto.nome)">🔍 {{ produto.nome }}</button>
                 }
               </div>
+              <div class="produtos-sugeridos">
+                <h3>Produtos sugeridos</h3>
+                <div class="lista-sugeridos">
+                  @for (produto of resultados; track produto.id) {
+                    <div class="produto-sugerido" (click)="abrir(produto.id)">
+                      <img [src]="produto.imagem" [alt]="produto.nome" />
+                      <p>{{ produto.nome }}</p>
+                      <strong>{{ produto.novo }}</strong>
+                    </div>
+                  }
+                </div>
+              </div>
             </div>
-          </div>
-        }
+          }
         </div>
       }
     </div>
-    <button [routerLink]="['/login']" title="Entrar" class="botao-login"><img src="login.png" alt="Entrar" /><span>Entrar</span></button>
-    <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho"><img src="carrinho.png" alt="Carrinho" /> <span>Carrinho</span></button>
+    <button [routerLink]="['/login']" title="Entrar" class="botao-login">
+      <img src="login.png" alt="Entrar" /><span>Entrar</span>
+    </button>
+    <button [routerLink]="['/carrinho']" title="Carrinho" class="carrinho">
+      <img src="carrinho.png" alt="Carrinho" /> <span>Carrinho</span>
+    </button>
   </header>
 }
-@if (!router.url.startsWith('/esqueceu')) 
-{
+@if (!router.url.startsWith('/esqueceu')) {
   <nav>
     <div class="item-menu">
-      <button class="categoria" title="Móveis" (click)="selecionarCategoria('Móveis')">Dispositivos Móveis</button>
+      <button class="categoria" title="Móveis" (click)="selecionarCategoria('Móveis')">
+        Dispositivos Móveis
+      </button>
       <div class="sub-menu">
         <button (click)="selecionarTipo('Celulares')">Celulares</button>
         <button (click)="selecionarTipo('Tablets')">Tablets</button>
@@ -74,7 +85,9 @@
       </div>
     </div>
     <div class="item-menu">
-    <button class="categoria" title="Computadores" (click)="selecionarCategoria('Computadores')">Computadores</button>
+      <button class="categoria" title="Computadores" (click)="selecionarCategoria('Computadores')">
+        Computadores
+      </button>
       <div class="sub-menu">
         <button (click)="selecionarTipo('Processadores')">Processadores</button>
         <button (click)="selecionarTipo('Placas-mãe')">Placas-mãe</button>
@@ -98,7 +111,9 @@
       </div>
     </div>
     <div class="item-menu">
-      <button class="categoria" title="TV e Áudio" (click)="selecionarCategoria('TV e Áudio')">TV e Áudio</button>
+      <button class="categoria" title="TV e Áudio" (click)="selecionarCategoria('TV e Áudio')">
+        TV e Áudio
+      </button>
       <div class="sub-menu">
         <button (click)="selecionarTipo('Smart TVs')">Smart TVs</button>
         <button (click)="selecionarTipo('Projetores')">Projetores</button>
@@ -126,7 +141,9 @@
       </div>
     </div>
     <div class="item-menu">
-      <button class="categoria" title="Acessórios" (click)="selecionarCategoria('Acessórios')">Acessórios</button>
+      <button class="categoria" title="Acessórios" (click)="selecionarCategoria('Acessórios')">
+        Acessórios
+      </button>
       <div class="sub-menu">
         <button (click)="selecionarTipo('Cabos')">Cabos</button>
         <button (click)="selecionarTipo('Carregadores')">Carregadores</button>
@@ -142,10 +159,29 @@
     </div>
   </nav>
 }
-<router-outlet/>
-@if (!router.url.startsWith('/cadastrar') && !router.url.startsWith('/esqueceu') && !router.url.startsWith('/login')) 
-{
+<router-outlet />
+@if (
+  !router.url.startsWith('/cadastrar') &&
+  !router.url.startsWith('/esqueceu') &&
+  !router.url.startsWith('/login')
+) {
   <div class="music-player">
-    <button class="music-button" (click)="toggleMudo()" [title]="mutado ? 'Ativar som' : 'Mutar som'">{{ mutado ? '🔇' : '🔊' }}</button>
+    <button
+      class="music-button"
+      (click)="toggleMudo()"
+      [title]="mutado ? 'Ativar som' : 'Mutar som'"
+    >
+      {{ mutado || volume === 0 ? '🔇' : '🔊' }}
+    </button>
+    <input
+      class="volume"
+      type="range"
+      min="0"
+      max="1"
+      step="0.1"
+      [value]="volume"
+      (input)="alterarVolume($event)"
+      title="Volume"
+    />
   </div>
 }
