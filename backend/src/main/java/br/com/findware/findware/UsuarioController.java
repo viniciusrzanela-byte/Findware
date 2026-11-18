@@ -60,4 +60,26 @@ public class UsuarioController
             return ResponseEntity.internalServerError().body("Falha ao enviar o e-mail. Tente novamente.");
         }
     }
+    private boolean senhaValida(String senha) 
+    {
+        if (senha == null || senha.length() < 8) {return false;}
+        boolean temMaiuscula = senha.matches(".*[A-Z].*");
+        boolean temMinuscula = senha.matches(".*[a-z].*");
+        boolean temNumero = senha.matches(".*\\d.*");
+        boolean temEspecial = senha.matches(".*[^A-Za-z0-9].*");
+        return temMaiuscula && temMinuscula && temNumero && temEspecial;
+    }
+    @PutMapping("/redefinir-senha")
+    public ResponseEntity<?> redefinirSenha(@RequestBody Map<String, String> request) 
+    {
+        String email = request.get("email");
+        String novaSenha = request.get("novaSenha");
+        if (email == null || !senhaValida(novaSenha)) {return ResponseEntity.badRequest().body("A nova senha deve ter pelo menos 8 caracteres, incluindo letra maiúscula, minúscula, número e caractere especial.");}
+        Optional<Usuario> usuarioOpt = repository.findByEmail(email.trim().toLowerCase());
+        if (usuarioOpt.isEmpty()) {return ResponseEntity.badRequest().body("Usuário não encontrado!");}
+        Usuario usuario = usuarioOpt.get();
+        usuario.setSenha(novaSenha);
+        repository.save(usuario);
+        return ResponseEntity.ok(Map.of("mensagem", "Senha alterada com sucesso!"));
+    }
 }
