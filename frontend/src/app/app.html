@@ -64,10 +64,14 @@
     </div>
     @if (auth.usuarioLogado()) 
     {
-      <button (click)="auth.logout()" title="Clique para sair" class="botao-login">
-        <img src="login.png" alt="Usuário" />
-        <span>{{ auth.usuarioLogado().nome }} (Sair)</span>
-      </button>
+      <div class="perfil-logado">
+        <div class="usuario-box" (click)="inputFoto.click()" title="Clique para alterar sua foto">
+          <img [src]="auth.usuarioLogado()?.foto || 'login.png'" alt="Foto de perfil" class="foto-perfil"/>
+          <span>{{ auth.usuarioLogado()?.nome }}</span>
+          <input #inputFoto type="file" accept="image/*" (change)="selecionarFoto($event)" hidden/>
+        </div>
+        <button type="button" (click)="auth.logout()">Sair</button>
+      </div>
     } 
     @else 
     {

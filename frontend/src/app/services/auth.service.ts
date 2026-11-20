@@ -4,23 +4,28 @@ import { Injectable, signal } from '@angular/core';
 export class AuthService 
 {
   usuarioLogado = signal<any>(this.carregarUsuario());
-
   private carregarUsuario() 
   {
     if (typeof localStorage === 'undefined') return null;
     const dados = localStorage.getItem('usuarioLogado');
     return dados ? JSON.parse(dados) : null;
   }
-
   login(usuario: any) 
   {
     localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
     this.usuarioLogado.set(usuario);
   }
-
   logout() 
   {
     localStorage.removeItem('usuarioLogado');
     this.usuarioLogado.set(null);
+  }
+  atualizarFoto(foto: string | null) 
+  {
+    const atual = this.usuarioLogado();
+    if (!atual) return;
+    const atualizado = { ...atual, foto };
+    this.usuarioLogado.set(atualizado);
+    localStorage.setItem('usuarioLogado', JSON.stringify(atualizado));
   }
 }

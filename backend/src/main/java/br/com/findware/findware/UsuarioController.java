@@ -82,4 +82,17 @@ public class UsuarioController
         repository.save(usuario);
         return ResponseEntity.ok(Map.of("mensagem", "Senha alterada com sucesso!"));
     }
+    @PutMapping("/foto")
+    public ResponseEntity<?> atualizarFoto(@RequestBody Map<String, String> request) 
+    {
+        String email = request.get("email");
+        String foto = request.get("foto");
+        if (email == null || email.trim().isEmpty()) { return ResponseEntity.badRequest().body("E-mail obrigatório."); }
+        Optional<Usuario> usuarioOpt = repository.findByEmail(email.trim().toLowerCase());
+        if (usuarioOpt.isEmpty()) { return ResponseEntity.badRequest().body("Usuário não encontrado!"); }
+        Usuario usuario = usuarioOpt.get();
+        usuario.setFoto(foto);
+        repository.save(usuario);
+        return ResponseEntity.ok(usuario);
+    }
 }
