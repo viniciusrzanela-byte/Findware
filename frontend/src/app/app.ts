@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterOutlet, NavigationEnd } from '@angular/router
 import { FormsModule } from '@angular/forms';
 import { ProdutoService } from './services/produto.service';
 import { AuthService } from './services/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,7 @@ export class App implements OnInit
 {
   protected readonly title = signal('eletronicos');
   produtos: any[] = [];
-  constructor(public router: Router, public auth: AuthService, private produtoService: ProdutoService) {}
-
+  constructor(public router: Router, public auth: AuthService, private produtoService: ProdutoService, private http: HttpClient) {}
   audio?: HTMLAudioElement;
   saudacoes = true;
   mutado = false;
@@ -132,6 +132,49 @@ export class App implements OnInit
     this.pesquisa = categoria;
     this.aberta = false;
     this.router.navigate(['/busca'], { queryParams: { categoria: categoria } });
+  }
+  selecionarFoto(event: Event) 
+  {
+    const input = event.target as HTMLInputElement;
+    const arquivo = input.files?.[0];
+    const usuario = this.auth.usuarioLogado();
+    if (!arquivo || !usuario) return;
+    const leitor = new FileReader();
+    leitor.onload = () => 
+    {
+      const img = new Image();
+      img.onload = () => 
+      {
+        const canvas = document.createElement('canvas');
+        const tamanho = 256;
+        canvas.width = tamanho;
+        canvas.height = tamanho;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const menorLado = Math.min(img.width, img.height);
+        const corteX = (img.width - menorLado) / 2;
+        const corteY = (img.height - menorLado) / 2;
+        ctx.drawImage(img, corteX, corteY, menorLado, menorLado, 0, 0, tamanho, tamanho);
+        const fotoBase64 = canvas.toDataURL('image/jpeg', 0.8);
+
+        this.http.put('http://localhost:8080/api/usuarios/foto',
+        {
+          email: usuario.email,
+          foto: fotoBase64,
+        })
+        .subscribe
+        ({
+          next: () => 
+          {
+            this.auth.atualizarFoto(fotoBase64);
+            input.value = '';
+          },
+          error: (erro) => console.error('Erro ao salvar foto:', erro),
+        });
+      };
+      img.src = leitor.result as string;
+    };
+    leitor.readAsDataURL(arquivo);
   }
   get resultados() 
   {

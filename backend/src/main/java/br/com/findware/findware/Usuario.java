@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 @Entity
 public class Usuario 
@@ -23,6 +24,10 @@ public class Usuario
     private String email;
     private String endereco;
     private String senha;
+
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String foto;
 
     public Usuario() {}
 
@@ -52,4 +57,7 @@ public class Usuario
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public String getFoto() { return foto; }
+    public void setFoto(String foto) { this.foto = foto; }
 }
