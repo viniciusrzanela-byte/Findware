@@ -22,6 +22,8 @@ export class Esqueceu
   codigoConfirmado = false;
   novaSenha = '';
   confirmarSenha = '';
+  mostrar = false;
+  mostrarConfirmar = false;
   erroSenha = '';
   salvandoSenha = false;
   senhaRedefinida = false;
@@ -46,6 +48,8 @@ export class Esqueceu
       this.codigoConfirmado = false;
       this.novaSenha = '';
       this.confirmarSenha = '';
+      this.mostrar = false;
+      this.mostrarConfirmar = false;
       this.erroSenha = '';
       this.popup = false;
     }

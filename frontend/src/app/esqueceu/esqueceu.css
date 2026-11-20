@@ -222,3 +222,37 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+.campo-senha {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo-senha input {
+  width: 100%;
+  padding-right: 42px;
+}
+
+.btn-olho {
+  position: absolute;
+  right: 10px;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-olho:hover {
+  color: #2563eb;
+}
+
+.btn-olho svg {
+  width: 20px;
+  height: 20px;
+}

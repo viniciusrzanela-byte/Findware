@@ -24,15 +24,66 @@
         </div>
       </div>
     }
-    @if (codigoConfirmado) 
-    {
+    @if (codigoConfirmado) {
       <div class="campo">
         <label for="novaSenha">Nova senha</label>
-        <input id="novaSenha" type="password" placeholder="É necessário que a nova senha tenha 8 caracteres com maiúscula, minúscula, número e símbolo" [(ngModel)]="novaSenha"/>
+        <div class="campo-senha">
+          <input
+            id="novaSenha"
+            [type]="mostrar ? 'text' : 'password'"
+            placeholder="É necessário que a nova senha tenha 8 caracteres com maiúscula, minúscula, número e símbolo"
+            [(ngModel)]="novaSenha"
+          />
+          <button
+            type="button"
+            class="btn-olho"
+            (click)="mostrar = !mostrar"
+            [attr.aria-label]="mostrar ? 'Ocultar senha' : 'Mostrar senha'"
+          >
+            @if (mostrar) {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            } @else {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            }
+          </button>
+        </div>
+        @if (novaSenha && !senhaV) {
+          <span class="erro-texto">
+            Mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.
+          </span>
+        }
       </div>
+
       <div class="campo">
         <label for="confirmarSenha">Confirmar nova senha</label>
-        <input id="confirmarSenha" type="password" placeholder="Repita a nova senha" [(ngModel)]="confirmarSenha"/>
+        <div class="campo-senha">
+          <input id="confirmarSenha" [type]="mostrarConfirmar ? 'text' : 'password'" placeholder="Repita a nova senha" [(ngModel)]="confirmarSenha"/>
+          <button type="button" class="btn-olho" (click)="mostrarConfirmar = !mostrarConfirmar" [attr.aria-label]="mostrarConfirmar ? 'Ocultar senha' : 'Mostrar senha'">
+            @if (mostrarConfirmar) 
+            {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            } 
+            @else 
+            {
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            }
+          </button>
+        </div>
+        @if (confirmarSenha && !iguais) {<span class="erro-texto">As senhas não coincidem.</span>}
         @if (erroSenha) {<span class="erro-texto">{{ erroSenha }}</span>}
       </div>
       <button type="button" class="btn-principal" [disabled]="salvandoSenha || !senhaV || !iguais" (click)="salvarNovaSenha()">{{ salvandoSenha ? 'Salvando...' : 'Redefinir senha' }}</button>
