@@ -20,29 +20,58 @@ export class Login
   popup = false;
   popupTitulo = '';
   popupMensagem = '';
+  popupErro = false;
 
-  constructor(private http: HttpClient, private router: Router, private auth: AuthService, private detector: ChangeDetectorRef) {}
-
+  constructor(private http: HttpClient, private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
   vEmail(valor: string): boolean {return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor.trim());}
+  get emailV() {return this.vEmail(this.email);}
 
-  get emailV() {
-    return this.vEmail(this.email);
+  abrirPopup(titulo: string, mensagem: string, erro = true) 
+  {
+    this.popupTitulo = titulo;
+    this.popupMensagem = mensagem;
+    this.popupErro = erro;
+    this.popup = true;
+    this.cdr.detectChanges();
   }
+
+  fecharPopup() {this.popup = false;}
 
   entrar() 
   {
     this.tentativa = true;
-    if (!this.emailV || !this.senha.trim()) {return;}
-    const credenciais = {email: this.email, senha: this.senha};
-    this.http.post('http://localhost:8080/api/usuarios/login', credenciais)
+
+    if (!this.email.trim() || !this.senha.trim()) 
+    {
+      this.abrirPopup('Campos obrigatórios', 'Preencha seu e-mail e sua senha para entrar.');
+      return;
+    }
+
+    if (!this.emailV) 
+    {
+      this.abrirPopup('E-mail inválido', 'Digite um endereço de e-mail válido.');
+      return;
+    }
+
+    this.http.post('http://localhost:8080/api/usuarios/login', 
+    {
+      email: this.email.trim(),
+      senha: this.senha,
+    })
     .subscribe
     ({
-      next: (resposta: any) => 
+      next: (resposta) => 
       {
         this.auth.login(resposta);
         this.router.navigate(['/']);
       },
-      error: (erro) => {alert(erro.error || 'E-mail ou senha inválidos!');}
+      error: (err) => 
+      {
+        const mensagem = typeof err.error === 'string' && err.error.trim()
+          ? err.error
+          : 'E-mail ou senha inválidos!';
+        this.abrirPopup('Erro ao entrar', mensagem, true);
+      },
     });
   }
 }
