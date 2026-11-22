@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { CarrinhoService } from '../carrinho/carrinho.service';
 
 @Component({
@@ -9,10 +10,15 @@ import { CarrinhoService } from '../carrinho/carrinho.service';
 })
 export class Carrinho {
   carrinho = inject(CarrinhoService);
+  private http = inject(HttpClient);
+
   mostrarPopup = false;
+  mensagemErro = '';
+  finalizando = false;
 
   limparCesta() {
     this.carrinho.limpar();
+    this.mensagemErro = '';
   }
 
   converterPreco(preco: string): number {
@@ -40,12 +46,29 @@ export class Carrinho {
   }
 
   finalizar() {
-    if (this.carrinho.itens.length === 0) {
+    if (this.carrinho.itens.length === 0 || this.finalizando) {
       return;
     }
-    this.carrinho.limpar();
 
-    this.mostrarPopup = true;
+    this.finalizando = true;
+    this.mensagemErro = '';
+
+    const payload = this.carrinho.itens.map((item) => ({
+      produtoId: item.produto.id,
+      quantidade: item.quantidade,
+    }));
+
+    this.http.post('http://localhost:8080/api/produtos/finalizar', payload).subscribe({
+      next: () => {
+        this.carrinho.limpar();
+        this.mostrarPopup = true;
+        this.finalizando = false;
+      },
+      error: (err) => {
+        this.mensagemErro = err.error?.erro || 'Não foi possível finalizar a compra.';
+        this.finalizando = false;
+      },
+    });
   }
 
   fecharPopup() {

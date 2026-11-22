@@ -14,10 +14,8 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController 
 {
-
     @Autowired
     private UsuarioRepository repository;
-
     @Autowired
     private JavaMailSender mailSender;
 
@@ -60,6 +58,7 @@ public class UsuarioController
             return ResponseEntity.internalServerError().body("Falha ao enviar o e-mail. Tente novamente.");
         }
     }
+
     private boolean senhaValida(String senha) 
     {
         if (senha == null || senha.length() < 8) {return false;}
@@ -69,6 +68,7 @@ public class UsuarioController
         boolean temEspecial = senha.matches(".*[^A-Za-z0-9].*");
         return temMaiuscula && temMinuscula && temNumero && temEspecial;
     }
+
     @PutMapping("/redefinir-senha")
     public ResponseEntity<?> redefinirSenha(@RequestBody Map<String, String> request) 
     {
@@ -82,6 +82,7 @@ public class UsuarioController
         repository.save(usuario);
         return ResponseEntity.ok(Map.of("mensagem", "Senha alterada com sucesso!"));
     }
+    
     @PutMapping("/foto")
     public ResponseEntity<?> atualizarFoto(@RequestBody Map<String, String> request) 
     {

@@ -1,9 +1,21 @@
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { HttpClient } from '@angular/common/http';
 
-import { Oferta, OFERTAS } from '../produto';
 import { CarrinhoService } from '../carrinho/carrinho.service';
+
+export interface Produto {
+  id: number;
+  nome: string;
+  imagem: string;
+  categoria: string;
+  tipo: string;
+  descricao: string;
+  desconto: number;
+  original: string;
+  novo: string;
+  estoque: number;
+}
 
 @Component({
   selector: 'app-detalhe',
@@ -11,31 +23,44 @@ import { CarrinhoService } from '../carrinho/carrinho.service';
   templateUrl: './detalhe.html',
   styleUrl: './detalhe.css',
 })
-export class Detalhe {
+
+export class Detalhe implements OnInit {
   private rota = inject(ActivatedRoute);
+  private http = inject(HttpClient);
   private carrinho = inject(CarrinhoService);
+
+  produto = signal<Produto | undefined>(undefined);
+  carregando = signal(true);
 
   mensagemCarrinho = '';
 
   private tempoMensagem?: ReturnType<typeof setTimeout>;
 
-  private parametros = toSignal(this.rota.paramMap, {
-    initialValue: this.rota.snapshot.paramMap,
-  });
-
-  produto = computed(() => {
-    const id = Number(this.parametros().get('id'));
-
-    return OFERTAS.find((produto) => produto.id === id);
-  });
-
-  constructor() {
-    effect(() => {
-      this.parametros();
+  ngOnInit(): void {
+    this.rota.paramMap.subscribe((params) => {
+      const id = Number(params.get('id'));
 
       this.mensagemCarrinho = '';
-
       window.scrollTo(0, 0);
+
+      if (!id) {
+        this.produto.set(undefined);
+        this.carregando.set(false);
+        return;
+      }
+
+      this.carregando.set(true);
+
+      this.http.get<Produto>(`http://localhost:8080/api/produtos/${id}`).subscribe({
+        next: (dados) => {
+          this.produto.set(dados);
+          this.carregando.set(false);
+        },
+        error: () => {
+          this.produto.set(undefined);
+          this.carregando.set(false);
+        },
+      });
     });
   }
 
@@ -51,9 +76,7 @@ export class Detalhe {
 
       clearTimeout(this.tempoMensagem);
 
-      this.tempoMensagem = setTimeout(() => {
-        this.mensagemCarrinho = '';
-      }, 2000);
+      this.tempoMensagem = setTimeout(() => {this.mensagemCarrinho = '';}, 2000);
     }
   }
 }

@@ -13,18 +13,15 @@ public class Usuario
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    
     @Column(name = "nome_meio")
     private String nomeMeio;
     private String sobrenome;
     private String cpf;
     private String telefone;
-    
     @Column(unique = true)
     private String email;
     private String endereco;
     private String senha;
-
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String foto;
