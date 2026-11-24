@@ -92,6 +92,12 @@
   font-weight: bold;
 }
 
+.mensagem-carrinho.sem-estoque {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+}
+
 @media (max-width: 800px) {
   .detalhe {
     gap: 30px;

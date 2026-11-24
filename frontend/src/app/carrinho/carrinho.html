@@ -7,13 +7,16 @@
         <span>Quantidade</span>
         <span>Valor</span>
       </div>
-      @for (item of carrinho.itens; track item.produto.id) {
+      @for (item of carrinho.itens; track item.produto.id) 
+      {
         <div class="item">
           <span class="nome">{{ item.produto.nome }}</span>
-          <span class="quantidade">{{ item.quantidade }}x</span>
-          <span class="valor">{{
-            formatarPreco(calcularValor(item.produto.novo, item.quantidade))
-          }}</span>
+          <div class="quantidade">
+            <button type="button" class="btn-qtd" (click)="diminuirItem(item.produto.id)" title="Remover 1 unidade">-</button>
+            <span>{{ item.quantidade }}</span>
+            <button type="button" class="btn-qtd" (click)="aumentarItem(item.produto)" [disabled]="item.quantidade >= item.produto.estoque" title="Adicionar 1 unidade">+</button>
+          </div>
+          <span class="valor">{{formatarPreco(calcularValor(item.produto.novo, item.quantidade))}}</span>
         </div>
       }
       <div class="total">
@@ -24,7 +27,9 @@
         <button class="limpar" (click)="limparCesta()">Limpar cesta</button>
         <button class="finalizar" (click)="finalizar()">Finalizar</button>
       </div>
-    } @else {
+    } 
+    @else 
+    {
       <div class="cesta-vazia">
         <h2>Seu carrinho está vazio</h2>
         <p>Adicione produtos para eles aparecerem aqui.</p>

@@ -1,82 +1,49 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { CarrinhoService, Produto } from '../carrinho/carrinho.service';
 
-import { CarrinhoService } from '../carrinho/carrinho.service';
-
-export interface Produto {
-  id: number;
-  nome: string;
-  imagem: string;
-  categoria: string;
-  tipo: string;
-  descricao: string;
-  desconto: number;
-  original: string;
-  novo: string;
-  estoque: number;
-}
-
-@Component({
+@Component
+({
   selector: 'app-detalhe',
   imports: [],
   templateUrl: './detalhe.html',
   styleUrl: './detalhe.css',
 })
-
-export class Detalhe implements OnInit {
-  private rota = inject(ActivatedRoute);
+export class Detalhe implements OnInit 
+{
+  private route = inject(ActivatedRoute);
   private http = inject(HttpClient);
-  private carrinho = inject(CarrinhoService);
-
+  carrinho = inject(CarrinhoService);
   produto = signal<Produto | undefined>(undefined);
-  carregando = signal(true);
-
   mensagemCarrinho = '';
-
-  private tempoMensagem?: ReturnType<typeof setTimeout>;
-
-  ngOnInit(): void {
-    this.rota.paramMap.subscribe((params) => {
-      const id = Number(params.get('id'));
-
-      this.mensagemCarrinho = '';
-      window.scrollTo(0, 0);
-
-      if (!id) {
-        this.produto.set(undefined);
-        this.carregando.set(false);
-        return;
-      }
-
-      this.carregando.set(true);
-
-      this.http.get<Produto>(`http://localhost:8080/api/produtos/${id}`).subscribe({
-        next: (dados) => {
-          this.produto.set(dados);
-          this.carregando.set(false);
-        },
-        error: () => {
-          this.produto.set(undefined);
-          this.carregando.set(false);
-        },
+  erroEstoque = false;
+  ngOnInit() 
+  {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) 
+    {
+      this.http.get<Produto>(`http://localhost:8080/api/produtos/${id}`).subscribe
+      ({
+        next: (dados) => {this.produto.set(dados);},
+        error: (err) => {console.error('Erro ao buscar detalhes do produto:', err);},
       });
-    });
-  }
-
-  adicionarAoCarrinho() {
-    const produtoAtual = this.produto();
-
-    if (produtoAtual) {
-      this.carrinho.adicionar(produtoAtual);
-
-      const item = this.carrinho.itens.find((item) => item.produto.id === produtoAtual.id);
-
-      this.mensagemCarrinho = `Produto adicionado! Quantidade no carrinho: ${item?.quantidade}`;
-
-      clearTimeout(this.tempoMensagem);
-
-      this.tempoMensagem = setTimeout(() => {this.mensagemCarrinho = '';}, 2000);
     }
+  }
+  adicionarAoCarrinho() 
+  {
+    const produtoAtual = this.produto();
+    if (!produtoAtual) {return;}
+    const resultado = this.carrinho.adicionar(produtoAtual);
+    if (!resultado.adicionado) 
+    {
+      this.erroEstoque = true;
+      this.mensagemCarrinho =resultado.motivo === 'sem_estoque'  
+        ? 'Produto sem estoque no momento.'
+        : `Limite de estoque atingido (${resultado.quantidade} no carrinho).`;
+      return;
+    }
+    this.erroEstoque = false;
+    this.mensagemCarrinho = `✓ Produto adicionado! Quantidade no carrinho: ${resultado.quantidade}`;
   }
 }
