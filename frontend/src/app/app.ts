@@ -24,6 +24,7 @@ export class App implements OnInit
   ultimoVolume = 0.4;
   pesquisa = '';
   aberta = false;
+  fotoExpandida = false;
 
   ngOnInit() 
   {
@@ -192,5 +193,15 @@ export class App implements OnInit
   {
     const elemento = event.target as HTMLElement;
     if (!elemento.closest('.area-pesquisa')) {this.aberta = false;}
+  }
+  abrirFoto() 
+  {
+    this.fotoExpandida = true;
+    document.body.style.overflow = 'hidden';
+  }
+  fecharFoto() 
+  {
+    this.fotoExpandida = false;
+    document.body.style.overflow = '';
   }
 }

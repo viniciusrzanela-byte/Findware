@@ -1,7 +1,8 @@
 <section class="pagina-cesta">
   <div class="conteudo-cesta">
     <h1>Carrinho</h1>
-    @if (carrinho.itens.length > 0) {
+    @if (carrinho.itens.length > 0) 
+    {
       <div class="cabecalho">
         <span>Item</span>
         <span>Quantidade</span>
@@ -36,13 +37,28 @@
       </div>
     }
   </div>
-  @if (mostrarPopup) {
+  @if (mostrarPopup) 
+  {
     <div class="fundo-popup">
       <div class="popup">
         <div class="icone-popup">✓</div>
         <h2>Compra finalizada!</h2>
         <p>Seu pedido foi realizado com sucesso.</p>
         <button (click)="fecharPopup()">Continuar</button>
+      </div>
+    </div>
+  }
+  @if (mostrarPopupLogin) 
+  {
+    <div class="fundo-popup">
+      <div class="popup">
+        <div class="icone-popup alerta">!</div>
+        <h2>Login necessário</h2>
+        <p>Você precisa entrar na sua conta para finalizar a compra.</p>
+        <div class="botoes-popup">
+          <button type="button" class="btn-secundario" (click)="fecharPopupLogin()">Cancelar</button>
+          <button type="button" (click)="irParaLogin()">Fazer login</button>
+        </div>
       </div>
     </div>
   }

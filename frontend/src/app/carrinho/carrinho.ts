@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { CarrinhoService, Produto } from '../carrinho/carrinho.service';
+import { AuthService } from '../services/auth.service';
 
 @Component
 ({
@@ -13,7 +15,10 @@ export class Carrinho
 {
   carrinho = inject(CarrinhoService);
   private http = inject(HttpClient);
+  private auth = inject(AuthService);
+  private router = inject(Router);
   mostrarPopup = false;
+  mostrarPopupLogin = false;
   mensagemErro = '';
   finalizando = false;
 
@@ -50,6 +55,11 @@ export class Carrinho
   finalizar() 
   {
     if (this.carrinho.itens.length === 0 || this.finalizando) {return;}
+    if (!this.auth.usuarioLogado()) 
+    {
+      this.mostrarPopupLogin = true;
+      return;
+    }
     this.finalizando = true;
     this.mensagemErro = '';
     const payload = this.carrinho.itens.map((item) => 
@@ -74,4 +84,10 @@ export class Carrinho
     });
   }
   fecharPopup() {this.mostrarPopup = false;}
+  fecharPopupLogin() {this.mostrarPopupLogin = false;}
+  irParaLogin() 
+  {
+    this.mostrarPopupLogin = false;
+    this.router.navigate(['/login']);
+  }
 }

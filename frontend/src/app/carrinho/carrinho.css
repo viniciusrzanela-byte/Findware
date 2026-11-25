@@ -224,6 +224,11 @@
   font-weight: bold;
 }
 
+.icone-popup.alerta {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
 .popup h2 {
   margin: 0 0 10px;
   color: #111827;
@@ -251,6 +256,20 @@
 
 .popup button:hover {
   background-color: #2563eb;
+}
+
+.botoes-popup {
+  display: flex;
+  gap: 12px;
+}
+
+.popup button.btn-secundario {
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+.popup button.btn-secundario:hover {
+  background-color: #d1d5db;
 }
 
 @keyframes aparecer {
